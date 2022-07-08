@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --ColorLight: rgb(200, 200, 200);
+    --ColorDark: rgb(100, 100, 100);
+    --ColorVeryDark: rgb(80, 80, 80);
+    --ColorExtraDark: rgb(25, 25, 25);
+}
+
+html {
+    background-color: rgb(25, 25, 25);
+}
+
+body {
+    margin: 0px;
+}

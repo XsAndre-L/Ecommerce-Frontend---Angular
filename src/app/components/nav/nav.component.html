@@ -1,0 +1,19 @@
+<div class="navBackground">
+
+    <section class="linkSection">
+        <a class="mainLink" routerLink="">My Store</a>
+        <a routerLink="cart">cart</a>
+    </section>
+
+    <section *ngIf="auth.validUser else elseBlock" class="userSection">
+        <!-- *ngIf="validUser else elseBlock" -->
+        <a routerLink="user"><img src="" alt="IMG"></a>
+    </section>
+    <ng-template #elseBlock>
+        <section class="userSection">
+            <a routerLink="login">Login</a>
+            <a routerLink="signup">Sign Up</a>
+        </section>
+    </ng-template>
+
+</div>

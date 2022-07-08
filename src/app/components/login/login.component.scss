@@ -1,0 +1,46 @@
+div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    form {
+        position: absolute;
+        top: 30%;
+        // margin-top: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--ColorLight);
+
+        h2 {
+            margin-bottom: 1.2em;
+            display: flex;
+            justify-content: center;
+        }
+
+        input {
+            margin-bottom: 1em;
+            height: 2.5em;
+            width: 20em;
+            border-color: var(--ColorLight);
+            border-radius: 5px;
+            border-style: inherit;
+            background-color: var(--ColorVeryDark);
+            text-align: center;
+
+            color: var(--ColorLight);
+
+
+        }
+
+        .submit_input {
+            height: 3.5em;
+
+            margin-top: 1em;
+            background-color: rgb(0, 143, 199);
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+    }
+}

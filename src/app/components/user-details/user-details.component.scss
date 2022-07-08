@@ -1,0 +1,65 @@
+div {
+    // background-color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: var(--ColorLight);
+    align-items: center;
+
+
+    .account_details_content {
+
+        display: inline-flex;
+
+
+
+    }
+
+    .user_info_label {
+        //background-color: yellow;
+
+        display: flex;
+        flex: 5;
+        justify-content: center;
+        border-right: 1px inset var(--ColorDark);
+    }
+
+    .user_info {
+        //background-color: green;
+        display: flex;
+        flex: 6;
+        justify-content: center;
+
+    }
+
+
+
+    li {
+        display: flex;
+        // align-items: baseline;
+
+        border: 1px inset var(--ColorLight);
+        // border-top: 1px inset var(--ColorDark);
+        border-bottom: none;
+        border-right: none;
+        border-left: none;
+
+        // p {
+        //     justify-content: center;
+        // }
+    }
+
+
+
+
+    section {
+        margin-bottom: 5px;
+        width: 80%;
+        text-align: center;
+        border-radius: 5px;
+
+        background-color: var(--ColorVeryDark);
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+}

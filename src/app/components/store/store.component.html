@@ -1,0 +1,17 @@
+<div class="productTable">
+    <div *ngFor="let product of products" (click)="selectProduct(product)" class="productView"
+        routerLink="item-details/{{product.id}}">
+        <div class="productInfoHeader">
+            <img src="{{product.imgPath}}" alt="">
+            <h2>{{product.name}}</h2>
+            <p>{{product.description}}</p>
+        </div>
+
+        <div class="itemDetails">
+
+            <p>Price: {{product.price}}</p>
+            <app-button label="Add" color="green"></app-button>
+        </div>
+
+    </div>
+</div>
