@@ -3,6 +3,7 @@
     <section class="linkSection">
         <a class="mainLink" routerLink="">My Store</a>
         <a routerLink="cart">cart</a>
+        <app-cart></app-cart>
     </section>
 
     <section *ngIf="auth.validUser else elseBlock" class="userSection">
