@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './components/primitives/button/button.component';
 import { InputFieldComponent } from './components/primitives/input-field/input-field.component';
+import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { InputFieldComponent } from './components/primitives/input-field/input-f
     NavComponent,
     UserDetailsComponent,
     ButtonComponent,
-    InputFieldComponent
+    InputFieldComponent,
+    CartItemComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,

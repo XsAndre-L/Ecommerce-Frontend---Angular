@@ -1,5 +1,17 @@
-<div class="cart_flyout">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eius voluptate, earum dignissimos molestias
-        nobis asperiores, animi ad fuga incidunt hic non perferendis doloremque quam, eaque expedita officia ratione
-        iure?</p>
+<div class="hoverme">
+
+    <div class="cart_flyout">
+        <section class="cart_content" *ngIf="(cartService.cartItems.length > 0) else elseblock">
+            <div>
+                <app-cart-item *ngFor="let item of cartService.cartItems" [product]="item"></app-cart-item>
+            </div>
+            <hr>
+            <div>
+                <app-button label="Check Out" color="green"></app-button>
+            </div>
+        </section>
+        <ng-template #elseblock>
+            <p>Empty Cart</p>
+        </ng-template>
+    </div>
 </div>

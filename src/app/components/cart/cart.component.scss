@@ -1,5 +1,50 @@
 .cart_flyout {
-    display: fixed;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+    position: fixed;
+
+    top: 50px;
     width: 200px;
-    height: 500px;
+    height: auto;
+    min-height: 200px;
+
+    border-top: 1px inset var(--ColorLight);
+    background-color: var(--ColorDark);
+    border-radius: 0 0 3px 3px;
+
+    hr {
+        border-style: inset;
+        color: var(--ColorLight);
+        width: 180px;
+        margin-top: 10px;
+    }
+}
+
+.hoverme {
+    // background-color: aqua;
+    position: fixed;
+    left: 100px;
+    top: 0px;
+    width: 60px;
+    height: 50px;
+    visibility: visible;
+
+    .cart_flyout {
+        visibility: hidden;
+    }
+}
+
+.hoverme:hover {
+    visibility: visible;
+
+    .cart_flyout {
+        visibility: visible;
+    }
+}
+
+
+.cart_flyout:hover {
+    display: flex;
+    visibility: visible;
 }
