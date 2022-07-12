@@ -1,64 +1,47 @@
-.productTable {
-
+.page {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    margin-top: 3em;
+    align-items: stretch;
 
-    flex-direction: row;
-    justify-content: center;
 
-    .productView {
+    .productSection {
 
-        width: 200px;
-        height: 360px;
-        padding: 10px;
-        margin: 5px;
-        overflow: hidden;
+        display: flex;
+        // flex-direction: row;
 
-        border-radius: 5px;
-        text-align: center;
-        background-color: rgb(80, 80, 80);
-        color: rgb(200, 200, 200);
+        background-color: white;
 
-        .productInfoHeader {
-            overflow: hidden;
-            height: 300px;
+        // align-items: stretch;
+        padding-bottom: 5px;
+        // height: 100%;
+        // position: absolute;
 
-            img {
-                width: 200px;
-                border-radius: 3px;
-            }
+        .productViewer {
+            // height: 100%;
+            background-color: purple;
+            // margin: 5px;
 
-            h2 {
-                font-size: large;
+
+
+            .productTable {
+
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+
+                height: 400px;
+                overflow-y: scroll;
+                overflow-x: hidden;
+
+                margin-top: 1em;
+                margin-bottom: 1em;
             }
         }
-
-        .itemDetails {
-            margin: 5px;
-            padding: 3px;
-            display: flex;
-            // flex-direction: column;
-            justify-content: space-between;
-
-            border-top: 1px inset var(--ColorLight);
-
-
-
-
-
-            // :host ::ng-deep app-button {     // figure out how to access css on a angular component
-
-            //     .btn {
-            //         background-color: white;
-            //     }
-            // }
-        }
-    }
-
-    .productView:hover {
-        box-shadow: 0px 0px 8px rgb(200, 200, 200);
     }
 }
+
 
 // @media(min-width:769px){
 

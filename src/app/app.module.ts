@@ -17,6 +17,10 @@ import { ButtonComponent } from './components/primitives/button/button.component
 import { InputFieldComponent } from './components/primitives/input-field/input-field.component';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { StoreNavComponent } from './components/store/store-nav/store-nav.component';
+import { StoreSideBarComponent } from './components/store/store-side-bar/store-side-bar.component';
+import { ProductCardComponent } from './components/store/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
     ButtonComponent,
     InputFieldComponent,
     CartItemComponent,
-    CartPageComponent
+    CartPageComponent,
+    FooterComponent,
+    StoreNavComponent,
+    StoreSideBarComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

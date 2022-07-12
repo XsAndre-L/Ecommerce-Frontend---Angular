@@ -1,4 +1,10 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
 div {
+    // margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,6 +19,7 @@ div {
         color: var(--ColorLight);
 
         h2 {
+            font-size: xx-large;
             margin-bottom: 1.2em;
             display: flex;
             justify-content: center;

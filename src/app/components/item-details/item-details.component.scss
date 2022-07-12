@@ -1,5 +1,31 @@
-h1,
+h2,
 h3,
 p {
-    color: white;
+    color: var(--ColorLight);
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+
+}
+
+.detailsPage {
+
+    display: flex;
+    width: 80%;
+    border-radius: 5px;
+    justify-content: center;
+    padding: 1em;
+    background-color: var(--ColorVeryDark);
+
+
+    .viewImage {
+        width: 300px;
+        border-radius: 3px;
+    }
+
+    .detailsSection {
+        margin-left: 20px;
+    }
 }

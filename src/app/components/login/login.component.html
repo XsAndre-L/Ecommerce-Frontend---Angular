@@ -1,8 +1,10 @@
-<div>
-    <form (ngSubmit)="loginUser()">
-        <h2>Login</h2>
-        <input type="email" placeholder="Email" [(ngModel)]="email">
-        <input type="password" placeholder="Password" [(ngModel)]="password">
-        <input class="submit_input" type="submit" (submit)="loginUser()">
-    </form>
-</div>
+<body class="page">
+    <div>
+        <form (ngSubmit)="loginUser()">
+            <h2>My Store</h2>
+            <input type="email" placeholder="Email" [(ngModel)]="email">
+            <input type="password" placeholder="Password" [(ngModel)]="password">
+            <input class="submit_input" type="submit" (submit)="loginUser()" value="Login">
+        </form>
+    </div>
+</body>

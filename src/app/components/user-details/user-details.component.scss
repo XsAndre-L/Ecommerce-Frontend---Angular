@@ -10,14 +10,9 @@ div {
     .account_details_content {
 
         display: inline-flex;
-
-
-
     }
 
     .user_info_label {
-        //background-color: yellow;
-
         display: flex;
         flex: 5;
         justify-content: center;
@@ -25,21 +20,17 @@ div {
     }
 
     .user_info {
-        //background-color: green;
         display: flex;
         flex: 6;
         justify-content: center;
-
     }
 
 
 
     li {
         display: flex;
-        // align-items: baseline;
 
         border: 1px inset var(--ColorLight);
-        // border-top: 1px inset var(--ColorDark);
         border-bottom: none;
         border-right: none;
         border-left: none;

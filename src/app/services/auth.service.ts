@@ -19,12 +19,13 @@ export class AuthService {
 
   constructor() { }
 
-  authorize(email: string, password: string) {
+  authorize(email: string, password: string): boolean {
 
     // Authenticate User
     //this.token = "hdhfhd";
     console.log("WORKING")
     this.validUser = true;
+    return this.validUser;
 
   }
 

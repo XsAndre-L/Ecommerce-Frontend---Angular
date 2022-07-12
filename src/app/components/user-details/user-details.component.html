@@ -1,47 +1,49 @@
-<div>
-    <header>
-        <h2>User Details</h2>
-    </header>
-    <section>
-        <h3>Account Details</h3>
-        <section class="account_details_content">
-            <section class="user_info_label">
-                <ul>
-                    <li>
-                        <p>Email: </p>
-                    </li>
-                    <li>
-                        <p>First Name: </p>
-                    </li>
-                    <li>
-                        <p>LastName: </p>
-                    </li>
-                </ul>
-            </section>
-            <section class="user_info">
-                <ul>
-                    <li>
-                        <p>dkfkdhf@dkhf</p>
-                    </li>
-                    <li>
-                        <p>Jake</p>
-                    </li>
-                    <li>
-                        <p>Freds</p>
-                    </li>
-                </ul>
-            </section>
+<body class="page">
+    <div>
+        <header>
+            <h2>User Details</h2>
+        </header>
+        <section>
+            <h3>Account Details</h3>
+            <section class="account_details_content">
+                <section class="user_info_label">
+                    <ul>
+                        <li>
+                            <p>Email: </p>
+                        </li>
+                        <li>
+                            <p>First Name: </p>
+                        </li>
+                        <li>
+                            <p>LastName: </p>
+                        </li>
+                    </ul>
+                </section>
+                <section class="user_info">
+                    <ul>
+                        <li>
+                            <p>dkfkdhf@dkhf</p>
+                        </li>
+                        <li>
+                            <p>Jake</p>
+                        </li>
+                        <li>
+                            <p>Freds</p>
+                        </li>
+                    </ul>
+                </section>
 
+            </section>
         </section>
-    </section>
 
-    <section>
-        <h3>Appearance</h3>
-        <input type="checkbox" id="darkmode">
-        <label for="darkmode">Darkmode</label>
-    </section>
+        <section>
+            <h3>Appearance</h3>
+            <input type="checkbox" id="darkmode" checked=true disabled=true>
+            <label for="darkmode">Darkmode</label>
+        </section>
 
-    <section>
-        <app-button (click)="logoutUser()" routerLink="" label="Logout" color="red"></app-button>
-    </section>
-</div>
+        <section>
+            <app-button (click)="logoutUser()" routerLink="" label="Logout" color="red"></app-button>
+        </section>
+    </div>
+</body>

@@ -1,0 +1,13 @@
+<div class="productView">
+    <div class="productInfoHeader" routerLink="item-details/{{product.id}}">
+        <img src="{{product.imgPath}}" alt="">
+        <h2>{{product.name}}</h2>
+        <p>{{product.description}}</p>
+    </div>
+
+    <div class="itemDetails">
+        <p>Price: {{product.price}}</p>
+        <app-button label="Add" color="green" (click)="addToCart(product)" link=""></app-button>
+    </div>
+
+</div>
