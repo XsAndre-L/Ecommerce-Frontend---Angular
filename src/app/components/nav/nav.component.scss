@@ -5,11 +5,11 @@
     position: fixed;
     padding: 1em;
 
-    display: inline-flex;
+    display: flex;
     justify-content: space-between;
 
     background-color: var(--ColorDark);
-    box-shadow: 0px 0px 5px var(--ColorExtraDark);
+    box-shadow: 0px 0px 2px var(--ColorExtraDark);
 
 
     a {
@@ -21,6 +21,8 @@
         border-right: 1px inset;
 
         color: white;
+
+
         font-size: 15px;
         font-weight: 900;
     }

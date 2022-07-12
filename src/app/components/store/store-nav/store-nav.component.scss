@@ -1,4 +1,13 @@
 .storeNav {
     display: flex;
     background-color: var(--ColorVeryDark);
+    flex-grow: 0;
+    height: 50px;
+    align-items: center;
+
+    border-bottom: 1px inset var(--ColorDark);
+    color: var(--ColorLight);
+    padding-left: 5px;
+    font-size: var(--fs-400);
+
 }

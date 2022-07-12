@@ -39,7 +39,7 @@ export class ProductService {
     let count = 0;
 
     let photos = this.http.get<Photo[]>(
-      'https://jsonplaceholder.typicode.com/photos?_limit=200'
+      'https://jsonplaceholder.typicode.com/photos?_limit=50'
       // ,
       // {
       //   headers: new HttpHeaders({ 'Authorization': 'Bearer ' + this.auth.token })

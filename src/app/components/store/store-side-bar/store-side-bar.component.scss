@@ -1,8 +1,19 @@
 .sideBar {
 
     display: flex;
-    // top: 100px;
+    flex-direction: column;
+    // align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+
     width: 250px;
     background-color: var(--ColorVeryDark);
 
+    padding: 5px;
+
+    a {
+        display: block;
+        color: var(--ColorLight);
+        text-decoration: none;
+    }
 }
