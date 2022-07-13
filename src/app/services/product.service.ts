@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 import { Product } from '../models/product';
 
 // import { AuthService } from './auth.service';
@@ -21,6 +21,8 @@ export class ProductService {
   product!: Product;
   photo: Photo | undefined;
 
+  private photos!: Subscription;
+
   constructor(private http: HttpClient) { }
 
 
@@ -38,7 +40,7 @@ export class ProductService {
   getProductList(): Product[] {
     let count = 0;
 
-    let photos = this.http.get<Photo[]>(
+    this.photos = this.http.get<Photo[]>(
       'https://jsonplaceholder.typicode.com/photos?_limit=50'
       // ,
       // {
@@ -55,6 +57,11 @@ export class ProductService {
 
     return this.productList;
 
+  }
+
+  ngOnDestroy() {
+    console.log('Unsubbing')
+    this.photos.unsubscribe();
   }
 
 }

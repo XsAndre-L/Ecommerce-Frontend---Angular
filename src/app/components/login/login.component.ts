@@ -1,29 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChange } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  email: string = "";
-  password: string = "";
+  form!: FormGroup;
 
-  constructor(private auth: AuthService, private router: Router) { }
+  validFields: boolean = true;
+
+  constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+    });
+  }
+
+  ngOnChanges(c: SimpleChange) {
+    console.log(c);
   }
 
   loginUser(): void {
-    console.log('www')
-    const login = this.auth.authorize(this.email, this.password);
+    let currEmail = this.form.value.email;
+    let currPassword = this.form.value.password;
 
-    if (login) {
-      this.router.navigate(['/'])
+    let login;
+
+    if (this.form.valid) {
+      login = this.auth.authorize(currEmail, currPassword);
+
+      if (login) {
+        this.router.navigate(['/']);
+      }
     }
   }
-
-
 }

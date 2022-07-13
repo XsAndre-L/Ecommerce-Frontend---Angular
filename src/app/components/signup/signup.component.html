@@ -1,16 +1,20 @@
 <body class="page">
+  <div>
+    <form [formGroup]="form" (ngSubmit)="signupUser()">
+      <h2>My Store</h2>
+      <input type="email" placeholder="Email" />
+      <input type="text" placeholder="First Name" />
+      <input type="text" placeholder="Last Name" />
 
-    <div>
-        <form (ngSubmit)="signupUser()">
-            <h2>My Store</h2>
-            <input type="email" placeholder="Email" [(ngModel)]="email">
-            <input type="text" placeholder="First Name" [(ngModel)]="firstName">
-            <input type="text" placeholder="Last Name" [(ngModel)]="lastName">
+      <input type="password" placeholder="Password" />
+      <input type="password" placeholder="Confirm Password" />
 
-            <input type="password" placeholder="Password" [(ngModel)]="password">
-            <input type="password" placeholder="Confirm Password" [(ngModel)]="password">
-
-            <input class="submit_input" type="submit" (submit)="signupUser()" value="Sign Up">
-        </form>
-    </div>
+      <input
+        class="submit_input"
+        type="submit"
+        (submit)="signupUser()"
+        value="Sign Up"
+      />
+    </form>
+  </div>
 </body>

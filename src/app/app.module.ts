@@ -11,7 +11,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 import { NavComponent } from './components/nav/nav.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './components/primitives/button/button.component';
 import { InputFieldComponent } from './components/primitives/input-field/input-field.component';
@@ -21,6 +21,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { StoreNavComponent } from './components/store/store-nav/store-nav.component';
 import { StoreSideBarComponent } from './components/store/store-side-bar/store-side-bar.component';
 import { ProductCardComponent } from './components/store/product-card/product-card.component';
+
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -40,16 +42,17 @@ import { ProductCardComponent } from './components/store/product-card/product-ca
     FooterComponent,
     StoreNavComponent,
     StoreSideBarComponent,
-    ProductCardComponent
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
-
+    // FormsModule,
+    ReactiveFormsModule,
+    // FontAwesomeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

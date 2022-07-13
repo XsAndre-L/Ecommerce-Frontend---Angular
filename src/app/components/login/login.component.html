@@ -1,10 +1,32 @@
 <body class="page">
-    <div>
-        <form (ngSubmit)="loginUser()">
-            <h2>My Store</h2>
-            <input type="email" placeholder="Email" name="email" required=true [(ngModel)]="email">
-            <input type="password" placeholder="Password" name="password" required=true [(ngModel)]="password">
-            <input class="submit_input" type="submit" (submit)="loginUser()" value="Login">
-        </form>
-    </div>
+  <div>
+    <form [formGroup]="form" (ngSubmit)="loginUser()">
+      <h2>My Store</h2>
+      <span *ngIf="!form.get('email')!.valid && form.get('email')!.touched"
+        >Please enter a valid email address!</span
+      >
+      <input
+        id="email"
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+      />
+      <span
+        *ngIf="!form.get('password')!.valid && form.get('password')!.touched"
+        >Please enter a valid password!</span
+      >
+      <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        formControlName="password"
+      />
+      <input
+        class="submit_input"
+        type="submit"
+        (submit)="loginUser()"
+        value="Login"
+      />
+    </form>
+  </div>
 </body>

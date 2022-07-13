@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { map, Observable, of, switchMap } from 'rxjs';
-import { Product } from 'src/app/models/product';
+import { map, of, switchMap } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -32,25 +31,6 @@ export class ItemDetailsComponent implements OnInit {
 
     this.route.snapshot
 
-    // console.log(this.route.snapshot.paramMap.get('id'));
-    // let id: string | null = this.route.snapshot.paramMap.get('id');
-
-    // if (!id) return;
-
-
-    // this.product$ = this.productService.getProduct2(Number(id))
-
-
-
-
-
-
-
-    // if (id != null) {
-
-    // this.product = this.productService.getProduct(parseInt(id));
-    // console.log(this.productService.getProduct(parseInt(id)))
-    // }
   }
 
 }

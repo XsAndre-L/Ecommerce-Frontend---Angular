@@ -5,18 +5,18 @@ import { Product } from 'src/app/models/product';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
 
-
-
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
-  styleUrls: ['./store.component.scss']
+  styleUrls: ['./store.component.scss'],
 })
 export class StoreComponent implements OnInit {
-
   products: Product[] = [];
 
-  constructor(private auth: AuthService, private productService: ProductService) { }
+  constructor(
+    private auth: AuthService,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
     this.products = this.productService.getProductList();
@@ -24,9 +24,5 @@ export class StoreComponent implements OnInit {
 
   selectProduct(product: Product): void {
     // this.cartService.cartItems.push(product);
-
   }
-
-
-
 }

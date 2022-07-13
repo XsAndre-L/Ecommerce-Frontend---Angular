@@ -1,22 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+// import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  styleUrls: ['./nav.component.scss'],
 })
-
 export class NavComponent implements OnInit {
   // validUser: boolean = false;
 
   //this.auth.token !== undefined;
 
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService) {}
 
-  ngOnInit(): void {
-  }
-
-
-
+  ngOnInit(): void {}
 }
