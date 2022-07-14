@@ -6,15 +6,15 @@ import { Product } from '../models/product';
 // import { AuthService } from './auth.service';
 
 type Photo = {
-  albumId: number,
-  id: number,
-  title: string,
-  url: string,
-  thumbnailUrl: string
-}
+  albumId: number;
+  id: number;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
+};
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
   productList: Product[] = [];
@@ -23,45 +23,77 @@ export class ProductService {
 
   private photos!: Subscription;
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient) {}
 
   getProduct2(product_id: number): Observable<Product> {
-    return this.http.get<Photo>(
-      `https://jsonplaceholder.typicode.com/photos/${product_id + 1}`
-    ).pipe(
-      map((photo: Photo) => {
-        return { id: product_id, name: photo.title, description: "hhdkhk", price: 5, category: "", imgPath: photo.url };
-      })
-    )
+    return this.http
+      .get<Photo>(
+        `https://jsonplaceholder.typicode.com/photos/${product_id + 1}`
+      )
+      .pipe(
+        map((photo: Photo) => {
+          return {
+            id: product_id,
+            name: photo.title,
+            description: 'hhdkhk',
+            price: 5,
+            category: '',
+            imgPath: photo.url,
+          };
+        })
+      );
   }
 
-
-  getProductList(): Product[] {
+  getProductList(): Observable<Product[]> {
     let count = 0;
+    console.log('GETTING PRODUCTS');
+    this.productList = [];
 
-    this.photos = this.http.get<Photo[]>(
-      'https://jsonplaceholder.typicode.com/photos?_limit=50'
-      // ,
-      // {
-      //   headers: new HttpHeaders({ 'Authorization': 'Bearer ' + this.auth.token })
-      // }
-    ).subscribe(
-      res => {
-        for (let index = 0; index < res.length; index++) {
-          const photo = res[index];
-          this.productList.push({ id: count++, name: `${photo.title.substring(0, 16)}`, description: String(`ldfflkdhfohdhfdohfoiekfaaggg ggggggggggggggggggggggggggggfhiifddkkk`).substring(0, 44), price: 5, category: "random", imgPath: `${photo.thumbnailUrl}` })
-        }
-      }
-    );
+    return this.http
+      .get<Photo[]>(
+        'https://jsonplaceholder.typicode.com/photos?_limit=50'
+        // ,
+        // {
+        //   headers: new HttpHeaders({ 'Authorization': 'Bearer ' + this.auth.token })
+        // }
+      )
+      .pipe(
+        map((photos: Photo[]) => {
+          let products: Product[] = [];
 
-    return this.productList;
+          const categories = ['fruit', 'vegetables', 'cars'];
+          for (let index = 0; index < photos.length; index++) {
+            const cat = (): string => {
+              const count = Math.floor(Math.random() * 3);
+              return categories[count];
+            };
+            const photo = photos[index];
+            products.push({
+              id: count++,
+              name: `${photo.title.substring(0, 16)}`,
+              description: String(
+                `ldfflkdhfohdhfdohfoiekfaaggg ggggggggggggggggggggggggggggfhiifddkkk`
+              ).substring(0, 44),
+              price: 5,
+              category: cat(),
+              imgPath: `${photo.thumbnailUrl}`,
+            });
+          }
 
+          return products;
+        })
+      );
+    // .subscribe((res) => {
+    //   // this.productList = res;
+    //   console.log(this.productList);
+    //   // return res;
+    // });
+
+    console.log(this.productList);
   }
 
   ngOnDestroy() {
-    console.log('Unsubbing')
+    console.log('Unsubbing');
     this.photos.unsubscribe();
   }
-
 }

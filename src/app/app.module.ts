@@ -21,6 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { StoreNavComponent } from './components/store/store-nav/store-nav.component';
 import { StoreSideBarComponent } from './components/store/store-side-bar/store-side-bar.component';
 import { ProductCardComponent } from './components/store/product-card/product-card.component';
+import { CartPageItemComponent } from './components/cart-page/cart-page-item/cart-page-item.component';
 
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -43,6 +44,7 @@ import { ProductCardComponent } from './components/store/product-card/product-ca
     StoreNavComponent,
     StoreSideBarComponent,
     ProductCardComponent,
+    CartPageItemComponent,
   ],
   imports: [
     BrowserModule,

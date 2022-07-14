@@ -34,6 +34,12 @@ div {
       text-align: center;
 
       color: var(--ColorLight);
+
+      &.ng-invalid {
+        &.ng-touched {
+          border: 1px inset red;
+        }
+      }
     }
 
     .submit_input {
@@ -49,15 +55,15 @@ div {
     .submit_input:disabled {
       background-color: rgb(116, 174, 197);
     }
+
+    span {
+      color: red;
+
+      font-size: var(--fs-200);
+    }
   }
 }
 
-.ng-touched .ng-invalid {
-  border: 1px inset red;
-}
-
-span {
-  color: red;
-
-  font-size: var(--fs-200);
-}
+// .ng-touched .ng-invalid {
+//   border: 1px inset red;
+// }

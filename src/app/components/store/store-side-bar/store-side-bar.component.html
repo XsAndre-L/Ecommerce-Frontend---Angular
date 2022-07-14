@@ -1,8 +1,9 @@
 <body class="sideBar">
-    <div>
-
-        <a routerLink="">Fruit</a>
-        <a routerLink="">Vegetables</a>
-        <a routerLink="">Fruit</a>
-    </div>
+  <div>
+    <a [routerLink]="['']" [queryParams]="{ category: 'fruit' }">Fruit</a>
+    <a [routerLink]="['']" [queryParams]="{ category: 'vegetables' }"
+      >Vegetables</a
+    >
+    <a [routerLink]="['']" [queryParams]="{ category: 'cars' }">Cars</a>
+  </div>
 </body>

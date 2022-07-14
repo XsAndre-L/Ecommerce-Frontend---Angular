@@ -2,19 +2,20 @@
   <div>
     <form [formGroup]="form" (ngSubmit)="signupUser()">
       <h2>My Store</h2>
-      <input type="email" placeholder="Email" />
-      <input type="text" placeholder="First Name" />
-      <input type="text" placeholder="Last Name" />
+      <label for="email">Email: </label>
+      <input id="email" type="email" formControlName="email" />
+      <label for="firstName">First Name: </label>
+      <input id="firstName" type="text" formControlName="firstName" />
+      <label for="lastName">Last Name: </label>
+      <input id="lastName" type="text" formControlName="lastName" />
 
-      <input type="password" placeholder="Password" />
-      <input type="password" placeholder="Confirm Password" />
+      <label for="password">Enter Password: </label>
+      <input id="password" type="password" formControlName="password" />
+      <label for="confirmPassword">Confirm Password: </label>
+      <input id="confirmPassword" type="password" formControlName="password2" />
+      <span *ngIf="passMatchError">Passwords do not match!</span>
 
-      <input
-        class="submit_input"
-        type="submit"
-        (submit)="signupUser()"
-        value="Sign Up"
-      />
+      <input class="submit_input" type="submit" value="Sign Up" />
     </form>
   </div>
 </body>

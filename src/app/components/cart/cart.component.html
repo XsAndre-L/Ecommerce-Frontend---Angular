@@ -1,17 +1,22 @@
 <div class="hoverme">
-
-    <div class="cart_flyout">
-        <section class="cart_content" *ngIf="(cartService.cartItems.length > 0) else elseblock">
-            <div>
-                <app-cart-item *ngFor="let item of cartService.cartItems" [product]="item"></app-cart-item>
-            </div>
-            <hr>
-            <div>
-                <app-button label="Check Out" color="green"></app-button>
-            </div>
-        </section>
-        <ng-template #elseblock>
-            <p>Empty Cart</p>
-        </ng-template>
-    </div>
+  <div class="cart_flyout">
+    <section
+      class="cart_content"
+      *ngIf="cartService.cartItems.length > 0; else elseblock"
+    >
+      <div>
+        <app-cart-item
+          *ngFor="let item of cartService.cartItems"
+          [product]="item.product"
+        ></app-cart-item>
+      </div>
+      <hr />
+      <div>
+        <app-button label="Check Out" color="green"></app-button>
+      </div>
+    </section>
+    <ng-template #elseblock>
+      <span class="emptyTag">Empty Cart</span>
+    </ng-template>
+  </div>
 </div>

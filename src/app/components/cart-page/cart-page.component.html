@@ -1,5 +1,15 @@
 <body class="page">
-    <div class="cart_page">
-        <app-cart-item *ngFor="let item of cartService.cartItems" [product]="item"></app-cart-item>
-    </div>
+  <div class="cart_page">
+    <app-cart-page-item
+      *ngFor="let item of cartService.cartItems"
+      [product]="item"
+    ></app-cart-page-item>
+    <section class="cartInfo">
+      <div class="total">
+        <label for="total">Total: </label>
+        <span id="total">${{ cartService.getTotalPrice() }}</span>
+      </div>
+      <app-button label="Check Out" color="green"></app-button>
+    </section>
+  </div>
 </body>

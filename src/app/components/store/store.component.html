@@ -1,14 +1,16 @@
 <body class="page">
-    <app-store-nav></app-store-nav>
-    <section class="productSection">
-        <app-store-side-bar></app-store-side-bar>
-        <div class="productViewer">
-
-            <div class="productTable">
-                <app-product-card *ngFor="let product of products" (click)="selectProduct(product)" [product]="product">
-                </app-product-card>
-            </div>
-        </div>
-    </section>
-
+  <app-store-nav (categoryChange)="changeCat($event)"></app-store-nav>
+  <section class="productSection">
+    <app-store-side-bar></app-store-side-bar>
+    <div class="productViewer">
+      <div class="productTable">
+        <app-product-card
+          *ngFor="let product of products"
+          (click)="selectProduct(product)"
+          [product]="product"
+        >
+        </app-product-card>
+      </div>
+    </div>
+  </section>
 </body>
