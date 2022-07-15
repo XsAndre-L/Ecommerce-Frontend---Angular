@@ -8,18 +8,4 @@
   background-color: var(--ColorDarker);
 
   padding: 5px;
-
-  a {
-    display: block;
-    border-radius: 2px;
-    padding: 5px;
-    color: var(--ColorLight);
-    text-decoration: none;
-  }
-  a:hover {
-    transition-duration: 0.3s;
-    padding-left: 10px;
-    background-color: var(--ColorVeryDark);
-    // text-decoration: underline;
-  }
 }

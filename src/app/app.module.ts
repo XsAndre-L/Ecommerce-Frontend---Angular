@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+// import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,8 @@ import { StoreNavComponent } from './components/store/store-nav/store-nav.compon
 import { StoreSideBarComponent } from './components/store/store-side-bar/store-side-bar.component';
 import { ProductCardComponent } from './components/store/product-card/product-card.component';
 import { CartPageItemComponent } from './components/cart-page/cart-page-item/cart-page-item.component';
+import { SideBarLinkComponent } from './components/store/store-side-bar/side-bar-link/side-bar-link.component';
+import { environment } from '../environments/environment';
 
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -45,14 +48,20 @@ import { CartPageItemComponent } from './components/cart-page/cart-page-item/car
     StoreSideBarComponent,
     ProductCardComponent,
     CartPageItemComponent,
+    SideBarLinkComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    // FormsModule,
+
     ReactiveFormsModule,
-    // FontAwesomeModule,
+    // ServiceWorkerModule.register('ngsw-worker.js', {
+    //   enabled: environment.production,
+    //   // Register the ServiceWorker as soon as the application is stable
+    //   // or after 30 seconds (whichever comes first).
+    //   registrationStrategy: 'registerWhenStable:30000'
+    // }),
   ],
   providers: [],
   bootstrap: [AppComponent],

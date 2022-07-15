@@ -1,9 +1,8 @@
 <body class="sideBar">
   <div>
-    <a [routerLink]="['']" [queryParams]="{ category: 'fruit' }">Fruit</a>
-    <a [routerLink]="['']" [queryParams]="{ category: 'vegetables' }"
-      >Vegetables</a
-    >
-    <a [routerLink]="['']" [queryParams]="{ category: 'cars' }">Cars</a>
+    <app-side-bar-link
+      *ngFor="let link of links"
+      [link]="link"
+    ></app-side-bar-link>
   </div>
 </body>

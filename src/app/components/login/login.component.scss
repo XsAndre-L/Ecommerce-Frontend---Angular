@@ -15,6 +15,9 @@ div {
     flex-direction: column;
     align-items: center;
     color: var(--ColorLight);
+    background-color: var(--ColorDarker);
+    padding: 40px;
+    border-radius: 5px;
 
     h2 {
       font-size: xx-large;
@@ -60,6 +63,17 @@ div {
       color: red;
 
       font-size: var(--fs-200);
+    }
+
+    .signupNotice {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+      .signupLink {
+        text-decoration: none;
+        font-weight: var(--fw-bold);
+        color: rgb(126, 126, 192);
+      }
     }
   }
 }

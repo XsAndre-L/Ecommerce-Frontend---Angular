@@ -1,6 +1,6 @@
 import { Component, OnInit, SimpleChange } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,10 +10,13 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup;
-
   validFields: boolean = true;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private routeParams: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -39,7 +42,18 @@ export class LoginComponent implements OnInit {
       login = this.auth.authorize(currEmail, currPassword);
 
       if (login) {
-        this.router.navigate(['/']);
+        // Return to Cart
+        this.routeParams.queryParams.subscribe((params) => {
+          console.log(params);
+
+          const returnTo = params['returnTo'];
+          if (returnTo) {
+            this.router.navigate([returnTo]);
+          } else {
+            this.router.navigate(['/']);
+          }
+          console.log(returnTo);
+        });
       }
     }
   }

@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Product } from 'src/app/models/product';
 import { CartProduct, CartService } from 'src/app/services/cart.service';
 
@@ -9,22 +9,39 @@ import { CartProduct, CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart-page-item.component.scss'],
 })
 export class CartPageItemComponent implements OnInit {
-  @Input() product: CartProduct;
+  @Input() product: CartProduct = {
+    product: {
+      name: 'default',
+      description: 'product description',
+      price: 0,
+      category: '',
+      imgPath: '',
+    },
+    amount: 1,
+  };
 
-  // productAmount: FormControl = new FormControl(1);
+  form: FormGroup = new FormGroup({
+    numInput: new FormControl(this.product.amount),
+  });
 
-  constructor(private cartService: CartService) {
-    this.product = {
-      product: {
-        name: 'default',
-        description: 'product description',
-        price: 0,
-        category: '',
-        imgPath: '',
-      },
-      amount: 0,
-    };
+  @Output() deleteProduct: EventEmitter<CartProduct> = new EventEmitter();
+
+  constructor(private cartService: CartService) {}
+
+  change(e: any) {
+    let cartItem = this.cartService.cartItems.find(
+      (item) => item.product.name === this.product.product.name
+    );
+
+    cartItem!.amount = this.form.value.numInput;
+    console.log(this.form.value.numInput);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form.controls['numInput'].setValue(this.product.amount);
+  }
+
+  deleteCartItem() {
+    this.deleteProduct.emit(this.product);
+  }
 }

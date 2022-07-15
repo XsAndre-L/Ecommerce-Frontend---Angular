@@ -1,52 +1,48 @@
 .productView {
+  width: 200px;
+  height: 360px;
+  padding: 10px;
+  margin: 0.7em;
+  overflow: hidden;
 
-    width: 200px;
-    height: 360px;
-    padding: 10px;
-    margin: .7em;
+  border-radius: 5px;
+  text-align: center;
+  background-color: var(--ColorVeryDark);
+  color: var(--ColorLight);
+
+  .productInfoHeader {
     overflow: hidden;
+    height: 300px;
 
-    border-radius: 5px;
-    text-align: center;
-    background-color: var(--ColorVeryDark);
-    color: var(--ColorLight);
-
-    .productInfoHeader {
-        overflow: hidden;
-        height: 300px;
-
-        img {
-            width: 200px;
-            border-radius: 3px;
-        }
-
-        h2 {
-            font-size: large;
-        }
+    img {
+      width: 200px;
+      border-radius: 3px;
     }
 
-    .itemDetails {
-        margin: 5px;
-        padding: 3px;
-        display: flex;
-        justify-content: space-between;
-
-        border-top: 1px inset var(--ColorLight);
-        align-items: center;
-
-
-
-
-
-        // :host ::ng-deep app-button {     // figure out how to access css on a angular component
-
-        //     .btn {
-        //         background-color: white;
-        //     }
-        // }
+    h2 {
+      color: var(--ColorVeryLight);
+      font-size: large;
     }
+  }
+
+  .itemDetails {
+    margin: 5px;
+    padding: 3px;
+    display: flex;
+    justify-content: space-between;
+
+    border-top: 1px inset var(--ColorLight);
+    align-items: center;
+
+    // :host ::ng-deep app-button {     // figure out how to access css on a angular component
+
+    //     .btn {
+    //         background-color: white;
+    //     }
+    // }
+  }
 }
 
 .productView:hover {
-    box-shadow: 0px 0px 8px var(--ColorLight);
+  box-shadow: 0px 0px 8px var(--ColorLight);
 }

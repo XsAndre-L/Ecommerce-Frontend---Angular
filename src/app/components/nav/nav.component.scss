@@ -1,45 +1,71 @@
 .navBackground {
+  display: flex;
+  justify-content: space-between;
 
-    width: 100%;
-    top: 0px;
-    position: fixed;
-    padding: 1em;
+  height: 35px;
+  width: 100%;
+  top: 0px;
+  position: fixed;
+  padding: 0.7em;
 
-    display: flex;
-    justify-content: space-between;
+  align-items: center;
 
-    background-color: var(--ColorDark);
-    box-shadow: 0px 0px 2px var(--ColorExtraDark);
+  background-color: var(--ColorDark);
+  box-shadow: 0px 0px 2px var(--ColorExtraDark);
 
+  a {
+    padding-right: 0.5em;
+    margin-right: 1em;
+    text-decoration: none;
 
-    a {
-        padding-right: 0.5em;
-        margin-right: 1em;
-        text-decoration: none;
+    border: none;
+    border-right: 1px inset;
 
-        border: none;
-        border-right: 1px inset;
+    color: var(--ColorVeryLight);
 
-        color: white;
+    font-size: 15px;
+    font-weight: 900;
+  }
 
+  a:hover {
+    color: var(--ColorLight);
+    transition-duration: 0.3s;
+  }
 
-        font-size: 15px;
-        font-weight: 900;
-    }
+  .mainLink {
+    font-size: larger;
+  }
 
-    a:hover {
-        color: var(--ColorLight);
-        transition-duration: 0.3s;
-    }
+  .userSection {
+    margin-right: 10px;
+    display: inline-flex;
+    justify-content: flex-end;
+  }
 
-    .mainLink {
+  .productCount {
+    display: inline-flex;
+    position: relative;
+    bottom: 20%;
+    height: auto;
+    width: auto;
 
-        font-size: larger;
-    }
+    aspect-ratio: 1/1;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
 
-    .userSection {
-        margin-right: 10px;
-        display: inline-flex;
-        justify-content: flex-end;
-    }
+    background-color: var(--ColorDarker);
+    font-weight: 100;
+    font-size: small;
+    border-radius: 50%;
+    min-width: 15px;
+  }
+
+  svg {
+    align-self: center;
+    aspect-ratio: 1/1;
+    width: 2em;
+    fill: var(--ColorLight);
+    // background-color: black;
+  }
 }

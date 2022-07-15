@@ -2,11 +2,16 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { User } from '../models/user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   // authEvent: EventEmitter = new EventEmitter();
-  userDetails: User;
+  userDetails: User = {
+    id: 0,
+    email: '',
+    firstName: 'placeholder',
+    lastName: 'placeholder',
+  };
   validUser: boolean = false;
 
   _token: string | undefined;
@@ -18,32 +23,23 @@ export class AuthService {
     this.token = token;
   }
 
-  constructor() {
-    this.userDetails = {
-      id: 0,
-      email: "",
-      firstName: "",
-      lastName: "",
-    }
-  }
+  constructor() {}
 
   authorize(email: string, password: string): boolean {
-
     // Authenticate User
     //this.token = "hdhfhd";
-    this.userDetails.email = email;
-    console.log(email);
-    this.userDetails.firstName = "placeholder";
-    this.userDetails.lastName = "placeholder";
+    this.userDetails = {
+      ...this.userDetails,
+      email: email,
+    };
 
     // console.log("WORKING")
     this.validUser = true;
     return this.validUser;
-
   }
 
   signout() {
-    console.log("Sign Out")
+    console.log('Sign Out');
     this.validUser = false;
   }
 }

@@ -4,14 +4,23 @@
   </section>
   <section class="cartItemInfo">
     <p class="pName">{{ product.product.name }}</p>
-    <input
-      type="number"
-      id="quantity"
-      name="quantity"
-      min="1"
-      value="{{ product.amount }}"
-    />
-    <p class="pAmount">{{ product.amount }}</p>
+
     <p class="pPrice">${{ product.product.price }}</p>
+    <form [formGroup]="form">
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        min="1"
+        value="{{ product.amount }}"
+        (ngModelChange)="change($event)"
+        formControlName="numInput"
+      />
+    </form>
+    <app-button
+      label="Delete"
+      color="red"
+      (click)="deleteCartItem()"
+    ></app-button>
   </section>
 </div>

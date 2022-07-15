@@ -10,6 +10,12 @@ export type CartProduct = {
 export class CartService {
   cartItems: CartProduct[] = [];
 
+  get cartCount(): number {
+    return this.cartItems.reduce((acc, currItem) => {
+      return acc + currItem.amount;
+    }, 0);
+  }
+
   constructor() {}
 
   getTotalPrice(): number {

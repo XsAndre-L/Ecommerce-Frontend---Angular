@@ -12,7 +12,7 @@
         formControlName="email"
       />
       <span
-        *ngIf="!form.get('password')!.valid && form.get('password')!.touched"
+        *ngIf="!form.get('password')?.valid && form.get('password')!.touched"
         >Please enter a valid password!</span
       >
       <input
@@ -21,6 +21,10 @@
         formControlName="password"
       />
       <input class="submit_input" type="submit" value="Login" />
+      <p class="signupNotice">
+        Don't have an account?
+        <a class="signupLink" routerLink="/signup">Sign Up</a> instead!
+      </p>
     </form>
   </div>
 </body>
