@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
+// import { BrowserModule } from '@angular/platform-browser';
 import { BrowserModule } from '@angular/platform-browser';
-// import { ServiceWorkerModule } from '@angular/service-worker';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +13,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 import { NavComponent } from './components/nav/nav.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
-import { ReactiveFormsModule } from '@angular/forms';
+// import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './components/primitives/button/button.component';
 import { InputFieldComponent } from './components/primitives/input-field/input-field.component';
@@ -25,6 +26,7 @@ import { ProductCardComponent } from './components/store/product-card/product-ca
 import { CartPageItemComponent } from './components/cart-page/cart-page-item/cart-page-item.component';
 import { SideBarLinkComponent } from './components/store/store-side-bar/side-bar-link/side-bar-link.component';
 import { environment } from '../environments/environment';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -54,14 +56,13 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-
     ReactiveFormsModule,
-    // ServiceWorkerModule.register('ngsw-worker.js', {
-    //   enabled: environment.production,
-    //   // Register the ServiceWorker as soon as the application is stable
-    //   // or after 30 seconds (whichever comes first).
-    //   registrationStrategy: 'registerWhenStable:30000'
-    // }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
