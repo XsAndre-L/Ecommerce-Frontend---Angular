@@ -12,7 +12,7 @@ export class AuthService {
     firstName: 'placeholder',
     lastName: 'placeholder',
   };
-  validUser: boolean = false;
+  validUser: boolean = true;
 
   _token: string | undefined;
 

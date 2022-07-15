@@ -1,6 +1,8 @@
 import { Component, OnInit, SimpleChange } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+// import { FormControl, FormGroup, Validators } from '@angular/forms';
+// import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
