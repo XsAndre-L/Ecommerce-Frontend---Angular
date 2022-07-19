@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'item-details/:id', component: ItemDetailsComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'cart', component: CartPageComponent },
+  // {path: 'auth', loadChildren: () => (await import('auth/auth.module')).AuthModule}
 ];
 
 @NgModule({

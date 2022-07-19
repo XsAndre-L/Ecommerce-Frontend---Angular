@@ -7,7 +7,7 @@
     </a>
   </section>
 
-  <section *ngIf="auth.validUser; else elseBlock" class="userSection">
+  <section *ngIf="userService.validUser; else elseBlock" class="userSection">
     <!-- *ngIf="validUser else elseBlock" -->
     <a routerLink="user">
       <!-- <img class="pfpImage" src="assets/circle-user-solid.svg" alt="IMG" -->

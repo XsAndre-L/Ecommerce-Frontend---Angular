@@ -1,10 +1,19 @@
 <body class="page">
-    <div class="detailsPage" *ngIf="product$ | async as product">
-        <img class="viewImage" src="{{product?.imgPath}}" alt="">
+  <!-- <div class="detailsPage" *ngIf="product$ | async as product"> -->
+  <!-- <img class="viewImage" src="{{product?.imgPath}}" alt="">
         <section class="detailsSection">
             <h2>{{product?.name}}</h2>
             <h3>Description</h3>
             <p>{{product?.description}}</p>
         </section>
-    </div>
+    </div> -->
+
+  <div class="detailsPage">
+    <img class="viewImage" src="{{ product?.imgPath }}" alt="" />
+    <section class="detailsSection">
+      <h2>{{ product?.name }}</h2>
+      <h3>Description</h3>
+      <p>{{ product?.description }}</p>
+    </section>
+  </div>
 </body>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 import { CartService } from 'src/app/services/cart.service';
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,7 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-  constructor(public auth: AuthService, public cs: CartService) {}
+  constructor(public userService: UserService, public cs: CartService) {}
 
   ngOnInit(): void {}
 }

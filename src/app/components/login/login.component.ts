@@ -1,9 +1,10 @@
 import { Component, OnInit, SimpleChange } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 // import { FormControl, FormGroup, Validators } from '@angular/forms';
 // import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,15 +16,18 @@ export class LoginComponent implements OnInit {
   validFields: boolean = true;
 
   constructor(
-    private auth: AuthService,
+    private userService: UserService,
     private router: Router,
     private routeParams: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [
+      email: new FormControl('ahloubser12@gmail.com', [
+        Validators.required,
+        Validators.email,
+      ]),
+      password: new FormControl('kwagga12', [
         Validators.required,
         Validators.minLength(8),
       ]),
@@ -35,28 +39,38 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(): void {
-    let currEmail = this.form.value.email;
-    let currPassword = this.form.value.password;
+    const loginUser: User = {
+      id: -1,
+      email: this.form.value.email,
+      firstName: '',
+      lastName: '',
+      password: this.form.value.password,
+    };
 
     let login;
 
     if (this.form.valid) {
-      login = this.auth.authorize(currEmail, currPassword);
+      login = this.userService
+        .authorize(loginUser) //this.form.value.email, this.form.value.password
+        .subscribe((result) => {
+          console.log(result);
+          if (result) {
+            this.userService._token = result;
+            this.userService.validUser = true;
 
-      if (login) {
-        // Return to Cart
-        this.routeParams.queryParams.subscribe((params) => {
-          console.log(params);
+            // Return to Cart
+            const snap = this.routeParams.snapshot.queryParams;
 
-          const returnTo = params['returnTo'];
-          if (returnTo) {
-            this.router.navigate([returnTo]);
-          } else {
-            this.router.navigate(['/']);
+            if (snap['returnTo'] !== undefined) {
+              const returnTo: string | undefined = snap['returnTo'][0];
+              this.router.navigate([returnTo]);
+            } else {
+              this.router.navigate(['/']);
+            }
           }
-          console.log(returnTo);
         });
-      }
+    } else {
+      return;
     }
   }
 }

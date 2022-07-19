@@ -26,12 +26,12 @@ export class StoreComponent implements OnInit {
     this.currCategory = e;
 
     if (this.currCategory == 'all') {
-      this.productService.getProductList().subscribe((res) => {
+      this.productService.getProducts('all').subscribe((res) => {
         this.products = res;
       });
     } else {
       console.log('NEW CATEGORY');
-      this.productService.getProductList().subscribe((res) => {
+      this.productService.getProducts(this.currCategory!).subscribe((res) => {
         this.products = res.filter((p) => p.category === this.currCategory);
       });
     }

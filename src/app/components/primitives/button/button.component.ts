@@ -3,17 +3,15 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent implements OnInit {
-  @Input() label: string = "";
-  @Input() link: string = "";
-  @Input() color: 'default' | 'red' | 'green' = "default";
+  @Input() label: string = '';
+  @Input() link: string = '';
+  @Input() color: 'default' | 'red' | 'green' = 'default';
+  @Input() state: 'disabled' | 'active' = 'active';
 
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

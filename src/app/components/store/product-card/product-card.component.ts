@@ -9,6 +9,7 @@ import { CartProduct, CartService } from 'src/app/services/cart.service';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: Product;
+
   constructor(private cartService: CartService) {
     this.product = {
       name: '',
@@ -19,7 +20,10 @@ export class ProductCardComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.product.imgPath = 'https://via.placeholder.com/150';
+    this.product.description = 'Random words too fill the description space';
+  }
 
   addToCart(product: Product): void {
     // let contains = false;

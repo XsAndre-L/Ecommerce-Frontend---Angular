@@ -1,35 +1,38 @@
 :host {
-    display: block;
+  display: block;
 }
 
-
 .btn {
-    display: inline-block;
-    padding: 1em;
-    margin: 5px;
-    text-decoration: none;
+  display: inline-block;
+  padding: 1em;
+  margin: 5px;
+  text-decoration: none;
 
-    color: var(--ColorLight);
+  color: var(--ColorLight);
 
-    border-radius: 5px;
+  border-radius: 5px;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .green {
-    background-color: rgb(42, 126, 60);
+  background-color: rgb(42, 126, 60);
 }
 
 .green:hover {
-    transition-duration: 0.3s;
-    background-color: rgb(33, 87, 46);
+  transition-duration: 0.3s;
+  background-color: rgb(33, 87, 46);
 }
 
-
 .red {
-    background-color: rgb(131, 61, 61);
+  background-color: rgb(131, 61, 61);
 }
 
 .red:hover {
-    background-color: rgb(92, 30, 30);
+  background-color: rgb(92, 30, 30);
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }

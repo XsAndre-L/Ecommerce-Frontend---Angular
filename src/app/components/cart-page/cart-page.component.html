@@ -13,6 +13,7 @@
       <app-button
         label="Check Out"
         color="green"
+        [state]="canCheckOut ? 'active' : 'disabled'"
         (click)="checkOut()"
       ></app-button>
     </section>

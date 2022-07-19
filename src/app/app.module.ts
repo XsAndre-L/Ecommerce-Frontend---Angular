@@ -27,6 +27,7 @@ import { CartPageItemComponent } from './components/cart-page/cart-page-item/car
 import { SideBarLinkComponent } from './components/store/store-side-bar/side-bar-link/side-bar-link.component';
 import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrderCardComponent } from './components/orders/order-card/order-card.component';
 
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -51,6 +52,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductCardComponent,
     CartPageItemComponent,
     SideBarLinkComponent,
+    OrderCardComponent,
   ],
   imports: [
     BrowserModule,
