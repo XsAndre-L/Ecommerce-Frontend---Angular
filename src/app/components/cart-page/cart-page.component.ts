@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/models/order';
 import { UserService } from 'src/app/services/user.service';
-import { CartService } from 'src/app/services/cart.service';
+import { CartProduct, CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 import { Product } from 'src/app/models/product';
 import { map, switchMap } from 'rxjs';
@@ -20,8 +20,6 @@ export class CartPageComponent implements OnInit {
   };
   canCheckOut: boolean = false;
 
-  allCartItems: { product: Product; amount: number }[] = [];
-
   constructor(
     public cartService: CartService,
     private userService: UserService,
@@ -31,56 +29,21 @@ export class CartPageComponent implements OnInit {
 
   // Runtime Methods
   ngOnInit(): void {
-    // this.cartService
-    //   .getPendingOrder()
-    //   .pipe(
-    //     map((item) => {
-    //       return item;
-    //     })
-    //   )
-    //   .subscribe((result) => {
-    //     console.log(result);
-    //   });
-
-    this.cartService.getPendingOrder().subscribe(
-      (pendingOrder: any) => {
+    console.log('In Cart Page');
+    let observer = {
+      next: (pendingOrder: CartProduct[]) => {
         this.cartService.cartItems = pendingOrder;
+        console.log(pendingOrder.length);
       },
-      (error: any) => {},
-      () => {
-        console.log('Complete Running For');
-        for (
-          let index = 0;
-          index < this.cartService.cartItems.length;
-          index++
-        ) {
-          const element = this.cartService.cartItems[index];
-          let currProduct = {
-            product: element.product,
-            amount: element.amount,
-          };
+      error: (error: any) => {},
+      complete: () => {
+        // TODO
+        console.log(this.cartService.cartCount);
+        this.canCheckOut = this.cartService.cartCount > 0;
+      },
+    };
 
-          // console.log('Setting Product');
-          // currProduct.product = element.product;
-          // currProduct.amount = element.amount;
-
-          this.allCartItems.push(currProduct);
-          console.log(this.allCartItems);
-
-          // element.product.subscribe((p) => {
-          // });
-        }
-      }
-    );
-
-    // TODO
-    this.canCheckOut = this.cartService.cartItems.length > 0;
-
-    // this.cartService.getPendingOrder().subscribe(
-    //   (x: any) => {}, // On Emit
-    //   (error: any) => {}, // On Error
-    //   () => {} // On Complete
-    // );
+    this.cartService.getPendingOrder().subscribe(observer);
 
     // this.allCartItems;
   }

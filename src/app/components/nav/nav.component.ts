@@ -9,7 +9,20 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-  constructor(public userService: UserService, public cs: CartService) {}
+  constructor(
+    public userService: UserService,
+    public cartService: CartService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const observer = {
+      next: (pendingOrder: any) => {
+        this.cartService.cartItems = pendingOrder;
+      },
+      error: (error: any) => {},
+      complete: () => {},
+    };
+
+    this.cartService.getPendingOrder().subscribe(observer);
+  }
 }

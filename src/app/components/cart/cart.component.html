@@ -6,7 +6,7 @@
     >
       <div>
         <app-cart-item
-          *ngFor="let item of allCartItems"
+          *ngFor="let item of this.cartService.cartItems"
           [product]="item.product"
         ></app-cart-item>
       </div>
