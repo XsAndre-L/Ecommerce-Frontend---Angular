@@ -5,7 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 import { Product } from 'src/app/models/product';
-import { switchMap } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-cart-page',
@@ -31,21 +31,56 @@ export class CartPageComponent implements OnInit {
 
   // Runtime Methods
   ngOnInit(): void {
-    this.canCheckOut = this.cartService.cartItems.length > 0;
-    this.cartService.getPendingOrder().subscribe((pendingOrder) => {
-      this.cartService.cartItems = pendingOrder;
-      for (let index = 0; index < pendingOrder.length; index++) {
-        const element = pendingOrder[index];
-        let currProduct: { product: Product; amount: number };
+    // this.cartService
+    //   .getPendingOrder()
+    //   .pipe(
+    //     map((item) => {
+    //       return item;
+    //     })
+    //   )
+    //   .subscribe((result) => {
+    //     console.log(result);
+    //   });
 
-        element.product.subscribe((p) => {
-          currProduct.product = p;
-          currProduct.amount = element.amount;
+    this.cartService.getPendingOrder().subscribe(
+      (pendingOrder: any) => {
+        this.cartService.cartItems = pendingOrder;
+      },
+      (error: any) => {},
+      () => {
+        console.log('Complete Running For');
+        for (
+          let index = 0;
+          index < this.cartService.cartItems.length;
+          index++
+        ) {
+          const element = this.cartService.cartItems[index];
+          let currProduct = {
+            product: element.product,
+            amount: element.amount,
+          };
+
+          // console.log('Setting Product');
+          // currProduct.product = element.product;
+          // currProduct.amount = element.amount;
+
           this.allCartItems.push(currProduct);
           console.log(this.allCartItems);
-        });
+
+          // element.product.subscribe((p) => {
+          // });
+        }
       }
-    });
+    );
+
+    // TODO
+    this.canCheckOut = this.cartService.cartItems.length > 0;
+
+    // this.cartService.getPendingOrder().subscribe(
+    //   (x: any) => {}, // On Emit
+    //   (error: any) => {}, // On Error
+    //   () => {} // On Complete
+    // );
 
     // this.allCartItems;
   }

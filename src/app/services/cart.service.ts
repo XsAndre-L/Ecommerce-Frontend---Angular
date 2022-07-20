@@ -7,7 +7,7 @@ import { ProductService } from './product.service';
 import { UserService } from './user.service';
 
 export type CartProduct = {
-  product: Observable<Product>;
+  product: Product;
   amount: number;
 };
 
@@ -43,12 +43,15 @@ export class CartService {
           for (let index = 0; index < orderInfo.length; index++) {
             const element = orderInfo[index];
 
-            cartProducts.push({
-              product: this.productService.getProductDetails(
-                element.product_id
-              ),
-              amount: element.amount,
-            });
+            this.productService
+              .getProductDetails(element.product_id)
+              .subscribe((item) => {
+                // return item
+                cartProducts.push({
+                  product: item,
+                  amount: element.amount,
+                });
+              });
           }
           return cartProducts;
         })
@@ -61,9 +64,10 @@ export class CartService {
     for (let index = 0; index < this.cartItems.length; index++) {
       const element = this.cartItems[index];
 
-      element.product.subscribe((currProduct) => {
-        total += currProduct.price * element.amount;
-      });
+      // element.product.subscribe((currProduct) => {
+      //   total += currProduct.price * element.amount;
+      // });
+      total += element.product.price * element.amount;
       // total += element.product.price * element.amount;
     }
 

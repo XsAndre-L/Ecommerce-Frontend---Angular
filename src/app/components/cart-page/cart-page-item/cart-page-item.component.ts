@@ -43,11 +43,13 @@ export class CartPageItemComponent implements OnInit {
 
     for (let index = 0; index < this.cartService.cartItems.length; index++) {
       const element = this.cartService.cartItems[index];
-      element.product.subscribe((p) => {
-        if (p.name === this.product.product.name) {
-          cartItem = { product: p, amount: element.amount };
-        }
-      });
+      // element.product.subscribe((p) => {
+      //   if (p.name === this.product.product.name) {
+      //     cartItem = { product: p, amount: element.amount };
+      //   }
+      // });
+
+      cartItem = { product: element.product, amount: element.amount };
     }
     // this.cartService.cartItems.find()
     // let cartItem = this.cartService.cartItems.find(
