@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { CartProduct, CartService } from 'src/app/services/cart.service';
 
@@ -9,8 +10,10 @@ import { CartProduct, CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart-page-item.component.scss'],
 })
 export class CartPageItemComponent implements OnInit {
-  @Input() product: CartProduct = {
+  // Inputs from parent
+  @Input() product: { product: Product; amount: number } = {
     product: {
+      id: null,
       name: 'default',
       description: 'product description',
       price: 0,
@@ -20,28 +23,46 @@ export class CartPageItemComponent implements OnInit {
     amount: 1,
   };
 
-  form: FormGroup = new FormGroup({
-    numInput: new FormControl(this.product.amount),
-  });
+  @Output() deleteProduct: EventEmitter<number> = new EventEmitter();
 
-  @Output() deleteProduct: EventEmitter<CartProduct> = new EventEmitter();
+  form: FormGroup = new FormGroup({
+    numInput: new FormControl(1),
+  });
 
   constructor(private cartService: CartService) {}
 
-  change(e: any) {
-    let cartItem = this.cartService.cartItems.find(
-      (item) => item.product.name === this.product.product.name
-    );
+  //
+  ngOnInit(): void {
+    this.form.controls['numInput'].setValue(this.product.amount);
+  }
+
+  // DOM Actions
+  onChange(event: any) {
+    let cartItem: { product: Product; amount: number };
+    // let cartItem: Product;
+
+    for (let index = 0; index < this.cartService.cartItems.length; index++) {
+      const element = this.cartService.cartItems[index];
+      element.product.subscribe((p) => {
+        if (p.name === this.product.product.name) {
+          cartItem = { product: p, amount: element.amount };
+        }
+      });
+    }
+    // this.cartService.cartItems.find()
+    // let cartItem = this.cartService.cartItems.find(
+    //   (item) => item.product.name
+    //    === this.product.product.name
+
+    // );
 
     cartItem!.amount = this.form.value.numInput;
     console.log(this.form.value.numInput);
   }
 
-  ngOnInit(): void {
-    this.form.controls['numInput'].setValue(this.product.amount);
-  }
-
   deleteCartItem() {
-    this.deleteProduct.emit(this.product);
+    if (this.product.product.id) {
+      this.deleteProduct.emit(this.product.product.id);
+    }
   }
 }

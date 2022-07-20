@@ -4,6 +4,8 @@ import { Order } from 'src/app/models/order';
 import { UserService } from 'src/app/services/user.service';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
+import { Product } from 'src/app/models/product';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-cart-page',
@@ -11,31 +13,44 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./cart-page.component.scss'],
 })
 export class CartPageComponent implements OnInit {
-  canCheckOut: boolean = false;
-
   cartOrder: Order = {
     id: 1,
     user_id: this.userService.userDetails.id!,
     status: 'pending',
   };
+  canCheckOut: boolean = false;
+
+  allCartItems: { product: Product; amount: number }[] = [];
 
   constructor(
-    private userService: UserService,
     public cartService: CartService,
-    private router: Router,
-    private orderService: OrderService
+    private userService: UserService,
+    private orderService: OrderService,
+    private router: Router
   ) {}
 
+  // Runtime Methods
   ngOnInit(): void {
     this.canCheckOut = this.cartService.cartItems.length > 0;
+    this.cartService.getPendingOrder().subscribe((pendingOrder) => {
+      this.cartService.cartItems = pendingOrder;
+      for (let index = 0; index < pendingOrder.length; index++) {
+        const element = pendingOrder[index];
+        let currProduct: { product: Product; amount: number };
+
+        element.product.subscribe((p) => {
+          currProduct.product = p;
+          currProduct.amount = element.amount;
+          this.allCartItems.push(currProduct);
+          console.log(this.allCartItems);
+        });
+      }
+    });
+
+    // this.allCartItems;
   }
 
-  deleteCurrItem(e: any) {
-    this.cartService.cartItems = this.cartService.cartItems.filter(
-      (p) => p.product.name !== e.product.name
-    );
-  }
-
+  // DOM Actions
   checkOut() {
     if (!this.canCheckOut) {
       return;
@@ -51,5 +66,13 @@ export class CartPageComponent implements OnInit {
         queryParams: { returnTo: ['/cart'] },
       });
     }
+  }
+
+  deleteCurrItem(e: any) {
+    // this.cartService.cartItems = this.cartService.cartItems.filter(
+    //   (p) => p.product.name !== e.product.name
+    // );
+
+    this.cartService.removeFromCart();
   }
 }

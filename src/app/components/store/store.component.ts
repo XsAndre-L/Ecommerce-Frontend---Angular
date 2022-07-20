@@ -16,11 +16,13 @@ export class StoreComponent implements OnInit {
 
   constructor(private productService: ProductService) {}
 
+  // Lifecycle Hooks
   ngOnInit(): void {}
 
-  selectProduct(product: Product): void {}
+  ngOnDestroy(): void {}
 
-  ngOnDestroy() {}
+  // DOM Actions
+  selectProduct(product: Product): void {}
 
   changeCat(e: any) {
     this.currCategory = e;

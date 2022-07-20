@@ -12,16 +12,5 @@ export class OrdersComponent implements OnInit {
 
   constructor(public orderService: OrderService) {}
 
-  ngOnInit(): void {
-    // this.orders.push({
-    //   id: 1,
-    //   user_id: 1,
-    //   status: 'pending',
-    // });
-    // this.orders.push({
-    //   id: 2,
-    //   user_id: 1,
-    //   status: 'pending',
-    // });
-  }
+  ngOnInit(): void {}
 }

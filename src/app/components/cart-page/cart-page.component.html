@@ -1,7 +1,7 @@
 <body class="page">
   <div class="cart_page">
     <app-cart-page-item
-      *ngFor="let item of cartService.cartItems"
+      *ngFor="let item of allCartItems"
       [product]="item"
       (deleteProduct)="deleteCurrItem($event)"
     ></app-cart-page-item>

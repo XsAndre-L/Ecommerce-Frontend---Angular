@@ -9,8 +9,10 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserDetailsComponent implements OnInit {
   userDetails?: User;
+
   constructor(public userService: UserService) {}
 
+  // Lifecycle Hooks
   ngOnInit(): void {
     this.userService.getUserDetails().subscribe((details) => {
       this.userDetails = details;
@@ -24,6 +26,7 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
+  // DOM Actions
   logoutUser(): void {
     this.userService.signout();
   }

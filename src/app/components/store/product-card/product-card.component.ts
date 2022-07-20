@@ -12,6 +12,7 @@ export class ProductCardComponent implements OnInit {
 
   constructor(private cartService: CartService) {
     this.product = {
+      id: null,
       name: '',
       description: '',
       price: 0,
@@ -26,35 +27,19 @@ export class ProductCardComponent implements OnInit {
   }
 
   addToCart(product: Product): void {
-    // let contains = false;
-    // let productIndex = 0;
-
-    const productInCart: CartProduct | undefined =
-      this.cartService.cartItems.find(
-        (item) => item.product.name === product.name
-      );
-
-    if (!productInCart) {
-      this.cartService.cartItems.push({ product: product, amount: 1 });
-      return;
-    }
-
-    productInCart.amount++;
-
-    // for (let index = 0; index < this.cartService.cartItems.length; index++) {
-    //   const element = this.cartService.cartItems[index];
-
-    //   if (element.product == product) {
-    //     contains = true;
-    //     productIndex = index;
-    //     break;
-    //   }
-    // }
-
-    // if (contains) {
-    //   this.cartService.cartItems[productIndex].amount++;
-    // } else {
+    this.cartService
+      .addToCart({ product: product, amount: 1 })
+      .subscribe((result) => {
+        console.log(result);
+      });
+    // const productInCart: CartProduct | undefined =
+    //   this.cartService.cartItems.find(
+    //     (item) => item.product.name === product.name
+    //   );
+    // if (!productInCart) {
     //   this.cartService.cartItems.push({ product: product, amount: 1 });
+    //   return;
     // }
+    // productInCart.amount++;
   }
 }
