@@ -16,8 +16,10 @@ export type CartProduct = {
 })
 export class CartService {
   cartItems: CartProduct[] = [];
+  cartMessage: [string, boolean] = ['', true];
 
   get cartCount(): number {
+    // console.log('Getting Total Cart Items');
     return this.cartItems.reduce((acc, currItem) => {
       return acc + currItem.amount;
     }, 0);
@@ -63,18 +65,30 @@ export class CartService {
 
     for (let index = 0; index < this.cartItems.length; index++) {
       const element = this.cartItems[index];
-
-      // element.product.subscribe((currProduct) => {
-      //   total += currProduct.price * element.amount;
-      // });
       total += element.product.price * element.amount;
-      // total += element.product.price * element.amount;
     }
 
     return total;
   }
 
+  updateProductAmount(productId: number, amount: number) {
+    this.addCartMessage('Item Updated!');
+    return this.http.put(
+      'http://localhost:3000/cart',
+      {
+        product_id: productId,
+        productAmount: amount,
+      },
+      {
+        headers: new HttpHeaders({
+          Authorization: '' + this.userService.token,
+        }),
+      }
+    );
+  }
+
   addToCart(newCartItem: { product: Product; amount: number }) {
+    this.addCartMessage('Item Added!');
     return this.http.post(
       'http://localhost:3000/cart',
       {
@@ -89,7 +103,45 @@ export class CartService {
     );
   }
 
-  removeFromCart() {}
+  removeFromCart(productId: number) {
+    this.addCartMessage('Item Removed!', false);
+    return this.http.delete(
+      'http://localhost:3000/cart',
+
+      {
+        headers: new HttpHeaders({
+          Authorization: '' + this.userService.token,
+          body: '' + productId,
+        }),
+      }
+    );
+  }
 
   checkOutCart() {}
+
+  updateCartFrontEnd() {
+    const observer = {
+      next: (items: any) => {
+        this.cartItems = items;
+      },
+      complete: () => {
+        return this.cartItems.length;
+      },
+    };
+    this.getPendingOrder().subscribe(observer);
+  }
+
+  addCartMessage(message: string, isGreen: boolean = true) {
+    if (isGreen) {
+      this.cartMessage[1] = true;
+    } else {
+      this.cartMessage[1] = false;
+    }
+
+    this.cartMessage[0] = message;
+
+    setTimeout(() => {
+      this.cartMessage[0] = '';
+    }, 1000);
+  }
 }

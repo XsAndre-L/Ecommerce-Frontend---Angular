@@ -28,6 +28,7 @@ import { SideBarLinkComponent } from './components/store/store-side-bar/side-bar
 import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrderCardComponent } from './components/orders/order-card/order-card.component';
+import { CheckOutSuccessPageComponent } from './components/check-out-success-page/check-out-success-page.component';
 
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -53,6 +54,7 @@ import { OrderCardComponent } from './components/orders/order-card/order-card.co
     CartPageItemComponent,
     SideBarLinkComponent,
     OrderCardComponent,
+    CheckOutSuccessPageComponent,
   ],
   imports: [
     BrowserModule,

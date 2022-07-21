@@ -68,4 +68,16 @@
     fill: var(--ColorLight);
     // background-color: black;
   }
+
+  .cartMessage {
+    font-size: small;
+    font-weight: bold;
+    &.green {
+      color: rgb(47, 255, 57);
+    }
+
+    &.red {
+      color: rgb(233, 42, 42);
+    }
+  }
 }

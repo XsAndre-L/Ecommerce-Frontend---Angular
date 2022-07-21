@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ButtonComponent implements OnInit {
   @Input() label: string = '';
   @Input() link: string = '';
-  @Input() color: 'default' | 'red' | 'green' = 'default';
+  @Input() color: 'default' | 'red' | 'green' | 'blue' = 'default';
   @Input() state: 'disabled' | 'active' = 'active';
 
   constructor() {}

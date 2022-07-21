@@ -5,6 +5,17 @@
       cart <span class="productCount">{{ cartService.cartCount }}</span>
       <app-cart></app-cart>
     </a>
+    <span
+      *ngIf="cartService.cartMessage[1] == false; else elseMessage"
+      class="cartMessage"
+      ngClass="red"
+      >{{ cartService.cartMessage[0] }}</span
+    >
+    <ng-template #elseMessage>
+      <span class="cartMessage" ngClass="green">{{
+        cartService.cartMessage[0]
+      }}</span>
+    </ng-template>
   </section>
 
   <section *ngIf="userService.validUser; else elseBlock" class="userSection">

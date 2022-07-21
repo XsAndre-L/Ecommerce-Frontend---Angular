@@ -36,3 +36,12 @@
   pointer-events: none;
   opacity: 0.5;
 }
+
+.blue {
+  background-color: rgb(76, 76, 247);
+}
+
+.blue:hover {
+  transition-duration: 0.3s;
+  background-color: rgb(47, 47, 153);
+}

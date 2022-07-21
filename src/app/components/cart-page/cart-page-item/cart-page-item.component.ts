@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product';
-import { CartProduct, CartService } from 'src/app/services/cart.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-cart-page-item',
@@ -38,28 +37,13 @@ export class CartPageItemComponent implements OnInit {
 
   // DOM Actions
   onChange(event: any) {
-    let cartItem: { product: Product; amount: number };
-    // let cartItem: Product;
+    console.log('Changing Amount');
 
-    for (let index = 0; index < this.cartService.cartItems.length; index++) {
-      const element = this.cartService.cartItems[index];
-      // element.product.subscribe((p) => {
-      //   if (p.name === this.product.product.name) {
-      //     cartItem = { product: p, amount: element.amount };
-      //   }
-      // });
-
-      cartItem = { product: element.product, amount: element.amount };
-    }
-    // this.cartService.cartItems.find()
-    // let cartItem = this.cartService.cartItems.find(
-    //   (item) => item.product.name
-    //    === this.product.product.name
-
-    // );
-
-    cartItem!.amount = this.form.value.numInput;
-    console.log(this.form.value.numInput);
+    this.cartService
+      .updateProductAmount(this.product.product.id!, this.form.value.numInput)
+      .subscribe((amount: any) => {
+        this.cartService.updateCartFrontEnd();
+      });
   }
 
   deleteCartItem() {

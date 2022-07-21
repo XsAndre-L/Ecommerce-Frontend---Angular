@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
+import { CheckOutSuccessPageComponent } from './components/check-out-success-page/check-out-success-page.component';
 // import { CartComponent } from './components/cart/cart.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 import { LoginComponent } from './components/login/login.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'item-details/:id', component: ItemDetailsComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'cart', component: CartPageComponent },
+  { path: 'checkout', component: CheckOutSuccessPageComponent },
   // {path: 'auth', loadChildren: () => (await import('auth/auth.module')).AuthModule}
 ];
 

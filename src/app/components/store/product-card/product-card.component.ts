@@ -31,7 +31,9 @@ export class ProductCardComponent implements OnInit {
       .addToCart({ product: product, amount: 1 })
       .subscribe((result) => {
         console.log(result);
+        this.cartService.updateCartFrontEnd();
       });
+
     // const productInCart: CartProduct | undefined =
     //   this.cartService.cartItems.find(
     //     (item) => item.product.name === product.name

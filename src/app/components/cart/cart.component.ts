@@ -15,31 +15,16 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('IN CART');
-    // for (let index = 0; index < this.cartService.cartItems.length; index++) {
-    //   const element = this.cartService.cartItems[index];
-    //   //let currProduct: { product: Product, amount: number };
 
-    //   let currProduct = { product: element.product, amount: element.amount };
-    //   this.allCartItems.push(currProduct);
+    // const observer = {
+    //   next: (pendingOrder: any) => {
+    //     this.cartService.cartItems = pendingOrder;
+    //   },
+    //   error: (error: any) => {},
+    //   complete: () => {},
+    // };
+    // this.cartService.getPendingOrder().subscribe(observer);
 
-    //   // console.log('Length OFF' + this.allCartItems.length);
-
-    //   // currProduct.product =
-
-    //   // element.product.subscribe((p) => {
-    //   //   currProduct.product = p;
-    //   //   currProduct.amount = element.amount;
-    //   //   this.allCartItems.push(currProduct);
-    //   // });
-    // }
-
-    const observer = {
-      next: (pendingOrder: any) => {
-        this.cartService.cartItems = pendingOrder;
-      },
-      error: (error: any) => {},
-      complete: () => {},
-    };
-    this.cartService.getPendingOrder().subscribe(observer);
+    this.cartService.updateCartFrontEnd();
   }
 }

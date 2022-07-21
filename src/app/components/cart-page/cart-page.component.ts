@@ -30,20 +30,10 @@ export class CartPageComponent implements OnInit {
   // Runtime Methods
   ngOnInit(): void {
     console.log('In Cart Page');
-    let observer = {
-      next: (pendingOrder: CartProduct[]) => {
-        this.cartService.cartItems = pendingOrder;
-        console.log(pendingOrder.length);
-      },
-      error: (error: any) => {},
-      complete: () => {
-        // TODO
-        console.log(this.cartService.cartCount);
-        this.canCheckOut = this.cartService.cartCount > 0;
-      },
-    };
 
-    this.cartService.getPendingOrder().subscribe(observer);
+    // this.cartService.getPendingOrder().subscribe(observer);
+    this.cartService.updateCartFrontEnd();
+    this.canCheckOut = this.cartService.cartItems.length > 0;
 
     // this.allCartItems;
   }
@@ -59,6 +49,7 @@ export class CartPageComponent implements OnInit {
       this.orderService.submitOrder(this.cartOrder);
       this.cartService.cartItems = [];
       this.canCheckOut = false;
+      this.router.navigate(['/checkout']);
     } else {
       this.router.navigate(['/login'], {
         queryParams: { returnTo: ['/cart'] },
@@ -67,10 +58,10 @@ export class CartPageComponent implements OnInit {
   }
 
   deleteCurrItem(e: any) {
-    // this.cartService.cartItems = this.cartService.cartItems.filter(
-    //   (p) => p.product.name !== e.product.name
-    // );
-
-    this.cartService.removeFromCart();
+    this.cartService.removeFromCart(e).subscribe((result) => {
+      console.log(result);
+      this.canCheckOut = this.cartService.cartItems.length > 1; // could be done beter because remove from cart could fail and in this case the button would still be disabled
+      this.cartService.updateCartFrontEnd();
+    });
   }
 }

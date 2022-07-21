@@ -2,6 +2,7 @@ import { Component, OnInit, SimpleChange } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { CartService } from 'src/app/services/cart.service';
 // import { FormControl, FormGroup, Validators } from '@angular/forms';
 // import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private cartService: CartService,
     private router: Router,
     private routeParams: ActivatedRoute
   ) {}
@@ -60,6 +62,15 @@ export class LoginComponent implements OnInit {
 
             // Return to Cart
             const snap = this.routeParams.snapshot.queryParams;
+
+            // const observer = {
+            //   next: (items: any) => {
+            //     this.cartService.cartItems = items;
+            //   },
+            // };
+            // this.cartService.getPendingOrder().subscribe(observer);
+
+            this.cartService.updateCartFrontEnd();
 
             if (snap['returnTo'] !== undefined) {
               const returnTo: string | undefined = snap['returnTo'][0];
