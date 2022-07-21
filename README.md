@@ -2,23 +2,31 @@
 
 ## Installation
 
-Step 1:
-Clone Repository
+---
 
-Step 2:
+> NOTE: This project is dependent on https://github.com/XsAndre-L/Storefront-Backend---Express.git to be running on the same computer on port 3000
+
+Step 1:  
+Clone Repository  
+`git clone https://github.com/XsAndre-L/Ecommerse-Frontend---Angular.git`
+
+Step 2:  
 Install Dependencies
 
-- inside cloned dir run:
+- Inside cloned directory run:  
   `npm i`
 
-run the project
+Step 3:  
+Run the project  
 `ng serve`
 
-Step 3:
+Step 4:  
 Open Browser
 http://localhost:4200/
 
 ## Project Overview
+
+---
 
 ### Project Description
 
@@ -27,4 +35,13 @@ user details page containing a link to all user orders.
 
 ### Routes
 
-Product Store -
+Products - `/`
+Product Categories - `/?category=fruit` / `/?category=vegetables`
+
+User Routes:
+Login - `/login`
+SignUp - `/signup`
+Profile - `/user`
+Cart - `/cart`
+Cart Checkout - `/checkout`
+Orders - `/orders`
