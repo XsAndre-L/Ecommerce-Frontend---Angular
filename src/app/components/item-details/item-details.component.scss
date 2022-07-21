@@ -1,31 +1,29 @@
 h2,
 h3,
 p {
-    color: var(--ColorLight);
+  color: var(--ColorLight);
 }
 
 .page {
-    display: flex;
-    justify-content: center;
-    margin-top: 5em;
+  display: flex;
+  justify-content: center;
+  margin-top: 5em;
 }
 
 .detailsPage {
+  display: flex;
+  width: 80%;
+  border-radius: 5px;
+  justify-content: center;
+  padding: 1em;
+  background-color: var(--ColorVeryDark);
 
-    display: flex;
-    width: 80%;
-    border-radius: 5px;
-    justify-content: center;
-    padding: 1em;
-    background-color: var(--ColorVeryDark);
+  .viewImage {
+    width: 300px;
+    border-radius: 3px;
+  }
 
-
-    .viewImage {
-        width: 300px;
-        border-radius: 3px;
-    }
-
-    .detailsSection {
-        margin-left: 20px;
-    }
+  .detailsSection {
+    margin-left: 20px;
+  }
 }
