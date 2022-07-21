@@ -7,7 +7,6 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class UserService {
-  // authEvent: EventEmitter = new EventEmitter();
   userDetails: User = {
     id: -1,
     email: '',
@@ -15,10 +14,10 @@ export class UserService {
     lastName: 'placeholder',
     password: '',
   };
+
   validUser: boolean = false;
 
   _token: string | undefined;
-
   get token(): string | undefined {
     return this._token;
   }
@@ -28,35 +27,18 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
+  // User Section
   authorize(userInfo: User): Observable<string> {
-    // this.userDetails = {
-    //   ...this.userDetails,
-    //   email: email,
-    //   password: password,
-    // };
-
     console.log(userInfo);
     console.log('Attempting Login');
     return this.http.post<string>('http://localhost:3000/user/login', userInfo);
-
-    // TK.subscribe((token) => {
-    //   this._token = token;
-
-    //   if (this.token) {
-    //     this.validUser = true;
-    //   }
-    //   return this.validUser;
-    // });
   }
 
   signout() {
     console.log('Sign Out');
+    this._token = '';
     this.validUser = false;
   }
-
-  // User Section
-
-  getUsers() {}
 
   getUserDetails(): Observable<User> {
     return this.http.get<User>('http://localhost:3000/user', {
@@ -72,7 +54,8 @@ export class UserService {
     );
   }
 
-  authenticateUser() {}
-
   updateUserDetails() {}
+
+  // Admin Section
+  getUsers() {}
 }

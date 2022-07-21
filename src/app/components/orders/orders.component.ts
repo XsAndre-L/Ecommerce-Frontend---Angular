@@ -8,9 +8,13 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-  // orders: Order[] = [];
+  orders: Order[] = [];
 
   constructor(public orderService: OrderService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.orderService.getOrders().subscribe((result) => {
+      this.orders = result;
+    });
+  }
 }

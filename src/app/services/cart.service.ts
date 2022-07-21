@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { OrderInfo } from '../models/orderInfo';
 import { Product } from '../models/product';
@@ -19,7 +20,6 @@ export class CartService {
   cartMessage: [string, boolean] = ['', true];
 
   get cartCount(): number {
-    // console.log('Getting Total Cart Items');
     return this.cartItems.reduce((acc, currItem) => {
       return acc + currItem.amount;
     }, 0);
@@ -28,10 +28,16 @@ export class CartService {
   constructor(
     private http: HttpClient,
     private productService: ProductService,
-    private userService: UserService
+    private userService: UserService,
+    private route: Router
   ) {}
 
+  // Cart Actions
   getPendingOrder(): Observable<CartProduct[]> {
+    if (!this.userService.validUser) {
+      this.addCartMessage('Login First!', false);
+      this.route.navigate(['/login']);
+    }
     return this.http
       .get<OrderInfo[]>('http://localhost:3000/cart', {
         headers: new HttpHeaders({
@@ -88,19 +94,33 @@ export class CartService {
   }
 
   addToCart(newCartItem: { product: Product; amount: number }) {
-    this.addCartMessage('Item Added!');
-    return this.http.post(
-      'http://localhost:3000/cart',
-      {
-        product_id: newCartItem.product.id,
-        product_amount: newCartItem.amount,
-      },
-      {
-        headers: new HttpHeaders({
-          Authorization: '' + this.userService.token,
-        }),
-      }
+    if (!this.userService.validUser) {
+      this.addCartMessage('Login First!', false);
+      this.route.navigate(['/login']);
+    } else {
+      this.addCartMessage('Item Added!');
+    }
+
+    const hasItem = this.cartItems.find(
+      (p) => p.product.id === newCartItem.product.id
     );
+
+    if (hasItem) {
+      return this.updateProductAmount(hasItem.product.id!, hasItem.amount + 1);
+    } else {
+      return this.http.post(
+        'http://localhost:3000/cart',
+        {
+          product_id: newCartItem.product.id,
+          product_amount: newCartItem.amount,
+        },
+        {
+          headers: new HttpHeaders({
+            Authorization: '' + this.userService.token,
+          }),
+        }
+      );
+    }
   }
 
   removeFromCart(productId: number) {
@@ -117,8 +137,19 @@ export class CartService {
     );
   }
 
-  checkOutCart() {}
+  checkOutCart() {
+    return this.http.put(
+      'http://localhost:3000/order',
+      {},
+      {
+        headers: new HttpHeaders({
+          Authorization: '' + this.userService.token,
+        }),
+      }
+    );
+  }
 
+  // Utillity Functions
   updateCartFrontEnd() {
     const observer = {
       next: (items: any) => {

@@ -32,6 +32,7 @@ export class ProductService {
     console.log('GETTING PRODUCTS');
     this.productList = [];
 
+    //----------------OLD CODE----------------------
     // return this.http
     //   .get<Photo[]>(
     //     'https://jsonplaceholder.typicode.com/photos?_limit=50'
@@ -71,6 +72,7 @@ export class ProductService {
     //   console.log(this.productList);
     //   // return res;
     // });
+    //----------------OLD CODE----------------------
 
     if (category !== 'all') {
       return this.http.get<Product[]>(
@@ -86,6 +88,7 @@ export class ProductService {
 
   // Product Details
   getProductDetails(product_id: number): Observable<Product> {
+    //----------------OLD CODE----------------------
     // return this.http
     //   .get<Photo>(
     //     `https://jsonplaceholder.typicode.com/photos/${product_id + 1}`
@@ -102,6 +105,7 @@ export class ProductService {
     //       };
     //     })
     //   );
+    //----------------OLD CODE----------------------
 
     return this.http.get<Product>(
       `http://localhost:3000/product/${product_id}`,

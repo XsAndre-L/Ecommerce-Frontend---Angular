@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./item-details.component.scss'],
 })
 export class ItemDetailsComponent implements OnInit {
+  //----------------OLD CODE----------------------
   // product$ = this.route.params.pipe(
   //   map((params: Params) => params['id']),
   //   switchMap((productId) => {
@@ -18,6 +19,7 @@ export class ItemDetailsComponent implements OnInit {
   //     return this.productService.getProductDetails(Number(productId));
   //   })
   // );
+  //----------------OLD CODE----------------------
 
   product: Product | undefined;
 

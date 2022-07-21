@@ -1,6 +1,8 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Order } from '../models/order';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -8,9 +10,7 @@ import { Order } from '../models/order';
 export class OrderService {
   userOrders: Order[] = [];
 
-  constructor() {}
-
-  // addItem(): Observable<OrderItem> {}
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   fetchDetail(): Observable<Order> {
     return of({
@@ -24,7 +24,9 @@ export class OrderService {
     this.userOrders.push(order);
   }
 
-  getOrders(): Order[] {
-    return this.userOrders;
+  getOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>('http://localhost:3000/order', {
+      headers: new HttpHeaders({ Authorization: '' + this.userService.token }),
+    });
   }
 }

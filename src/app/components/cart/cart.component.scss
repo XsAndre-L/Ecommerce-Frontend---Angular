@@ -22,7 +22,6 @@
 }
 
 .hoverme {
-  // background-color: aqua;
   position: absolute;
   left: 100px;
   top: 0px;
@@ -49,6 +48,8 @@
 }
 
 .emptyTag {
+  width: 100%;
   position: absolute;
   align-self: center;
+  text-align: center;
 }

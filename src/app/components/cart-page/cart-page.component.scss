@@ -15,7 +15,6 @@
   .cartInfo {
     display: inline-flex;
     margin-top: 20px;
-    // background-color: blue;
     width: 500px;
     height: 80px;
     border-radius: 0 0 3px 3px;
@@ -25,7 +24,6 @@
     justify-content: space-around;
 
     .total {
-      // position: relative;
       top: 40%;
       font-size: var(--fs-500);
       font-weight: var(--fw-bold);

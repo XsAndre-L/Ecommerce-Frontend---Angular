@@ -25,11 +25,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl('ahloubser12@gmail.com', [
-        Validators.required,
-        Validators.email,
-      ]),
-      password: new FormControl('kwagga12', [
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
       ]),
@@ -60,17 +57,10 @@ export class LoginComponent implements OnInit {
             this.userService._token = result;
             this.userService.validUser = true;
 
+            this.cartService.updateCartFrontEnd();
+
             // Return to Cart
             const snap = this.routeParams.snapshot.queryParams;
-
-            // const observer = {
-            //   next: (items: any) => {
-            //     this.cartService.cartItems = items;
-            //   },
-            // };
-            // this.cartService.getPendingOrder().subscribe(observer);
-
-            this.cartService.updateCartFrontEnd();
 
             if (snap['returnTo'] !== undefined) {
               const returnTo: string | undefined = snap['returnTo'][0];

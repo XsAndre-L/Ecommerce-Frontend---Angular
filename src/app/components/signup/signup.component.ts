@@ -16,17 +16,17 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl<string | null>('ahloubser12@gmail.com', [
+      email: new FormControl<string | null>('', [
         Validators.email,
         Validators.required,
       ]),
-      firstName: new FormControl<string | null>('Andre', Validators.required),
-      lastName: new FormControl<string | null>('Loubser', Validators.required),
-      password: new FormControl<string | null>('kwagga12', [
+      firstName: new FormControl<string | null>('', Validators.required),
+      lastName: new FormControl<string | null>('', Validators.required),
+      password: new FormControl<string | null>('', [
         Validators.minLength(8),
         Validators.required,
       ]),
-      password2: new FormControl<string | null>('kwagga12', [
+      password2: new FormControl<string | null>('', [
         Validators.minLength(8),
         Validators.required,
       ]),
@@ -40,8 +40,6 @@ export class SignupComponent implements OnInit {
 
     if (this.form.value.password == this.form.value.password2) {
       this.passMatchError = false;
-      // console.log('Equal');
-      // console.log(this.form.value);
 
       const newUser: User = {
         id: -1,
@@ -53,7 +51,6 @@ export class SignupComponent implements OnInit {
       console.log('Creating Account');
 
       this.userService.createAccount(newUser).subscribe((result) => {
-        // console.log('result - ' + result);
         this.userService._token = result;
       });
     } else {

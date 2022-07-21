@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
-import { CartProduct, CartService } from 'src/app/services/cart.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -33,15 +33,5 @@ export class ProductCardComponent implements OnInit {
         console.log(result);
         this.cartService.updateCartFrontEnd();
       });
-
-    // const productInCart: CartProduct | undefined =
-    //   this.cartService.cartItems.find(
-    //     (item) => item.product.name === product.name
-    //   );
-    // if (!productInCart) {
-    //   this.cartService.cartItems.push({ product: product, amount: 1 });
-    //   return;
-    // }
-    // productInCart.amount++;
   }
 }

@@ -16,15 +16,5 @@ export class NavComponent implements OnInit {
     public cartService: CartService
   ) {}
 
-  ngOnInit(): void {
-    // const observer = {
-    //   next: (pendingOrder: any) => {
-    //     this.cartService.cartItems = pendingOrder;
-    //     this.cartContents = this.cartService.cartItems.length;
-    //   },
-    //   error: (error: any) => {},
-    //   complete: () => {},
-    // };
-    // this.cartService.getPendingOrder().subscribe(observer);
-  }
+  ngOnInit(): void {}
 }
