@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,7 +13,7 @@ export class SignupComponent implements OnInit {
   form!: FormGroup;
   passMatchError: boolean = false;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -52,6 +53,8 @@ export class SignupComponent implements OnInit {
 
       this.userService.createAccount(newUser).subscribe((result) => {
         this.userService._token = result;
+        this.userService.validUser = true;
+        this.router.navigate(['/']);
       });
     } else {
       this.passMatchError = true;
