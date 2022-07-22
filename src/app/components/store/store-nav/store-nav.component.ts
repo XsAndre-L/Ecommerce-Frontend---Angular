@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
-import { StoreComponent } from '../store.component';
 
 @Component({
   selector: 'app-store-nav',

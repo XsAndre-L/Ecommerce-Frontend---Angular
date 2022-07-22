@@ -1,10 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Product } from '../models/product';
 import { UserService } from './user.service';
-
-// import { AuthService } from './auth.service';
 
 type Photo = {
   albumId: number;
