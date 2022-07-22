@@ -16,8 +16,14 @@
       <span *ngIf="passMatchError">Passwords do not match!</span>
 
       <input class="submit_input" type="submit" value="Sign Up" />
-      <p class="loginNotice">
+
+      <p class="loginNotice" *ngIf="!authError">
         Already signed up?
+        <a class="loginLink" routerLink="/login">Login</a> instead!
+      </p>
+
+      <p class="loginErrorNotice" *ngIf="authError">
+        You already registered
         <a class="loginLink" routerLink="/login">Login</a> instead!
       </p>
     </form>

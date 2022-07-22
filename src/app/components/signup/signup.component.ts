@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { catchError, of } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class SignupComponent implements OnInit {
   form!: FormGroup;
   passMatchError: boolean = false;
+  authError: boolean = false;
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -51,11 +53,24 @@ export class SignupComponent implements OnInit {
       };
       console.log('Creating Account');
 
-      this.userService.createAccount(newUser).subscribe((result) => {
-        this.userService._token = result;
-        this.userService.validUser = true;
-        this.router.navigate(['/']);
-      });
+      // const observer = {
+      //   next: (result: any)=>{
+      //     this.userService._token = result;
+      //     this.userService.validUser = true;
+      //     this.router.navigate(['/']);},
+      //   error: (error: any)=>{console.log('ERROR: ' + error)},
+      //   complete: ()=>{}
+      // }
+      this.userService
+        .createAccount(newUser)
+        .pipe(
+          catchError((e) => {
+            console.log(e);
+            this.authError = true;
+            return of(e);
+          })
+        )
+        .subscribe();
     } else {
       this.passMatchError = true;
       console.log('Passwords Do not Match');
