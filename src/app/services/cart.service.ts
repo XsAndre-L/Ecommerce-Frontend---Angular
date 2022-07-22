@@ -173,6 +173,6 @@ export class CartService {
 
     setTimeout(() => {
       this.cartMessage[0] = '';
-    }, 1000);
+    }, 2000);
   }
 }

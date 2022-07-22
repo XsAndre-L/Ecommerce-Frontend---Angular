@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'orders', component: OrdersComponent },
   { path: 'cart', component: CartPageComponent },
   { path: 'checkout', component: CheckOutSuccessPageComponent },
+  { path: '**', redirectTo: '/' },
   // {path: 'auth', loadChildren: () => (await import('auth/auth.module')).AuthModule}
 ];
 
