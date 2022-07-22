@@ -28,6 +28,7 @@ const routes: Routes = [
   // { path: 'cart', component: CartPageComponent },
   // { path: 'checkout', component: CheckOutSuccessPageComponent },
 
+  // LAZY LOADING MODULES
   // {
   //   path: '',
   //   loadChildren: () =>
