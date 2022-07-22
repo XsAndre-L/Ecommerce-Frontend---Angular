@@ -1,27 +1,5 @@
 # Ecommerse-Frontend---Angular
 
-## Installation
-
----
-
-Step 1:  
-Clone Repository  
-`git clone https://github.com/XsAndre-L/Ecommerse-Frontend---Angular.git`
-
-Step 2:  
-Install Dependencies
-
-- Inside cloned directory run:  
-  `npm i`
-
-Step 3:  
-Run the project  
-`ng serve`
-
-Step 4:  
-Open Browser
-http://localhost:4200/
-
 ## Project Overview
 
 ---
@@ -45,7 +23,18 @@ This project was built for an udacity project submision, I wanted to build a min
 - after successfull purchase a checkout success page does show up.
   ![Image](/src/assets/screenshots/Order%20Success%20Page.png)
 
-####
+#### Framework
+
+This frontend project uses The Angular Framework.
+
+#### Features
+
+Login page
+Signup page
+hover cart preview
+product category filter
+user details page
+orders page
 
 An ecommerse frontend including a store page, user account actions such as account creation and user authentication,
 user details page containing a link to all user orders.
@@ -62,3 +51,25 @@ Profile - `/user`
 Cart - `/cart`
 Cart Checkout - `/checkout`
 Orders - `/orders`
+
+## Installation
+
+---
+
+Step 1:  
+Clone Repository  
+`git clone https://github.com/XsAndre-L/Ecommerse-Frontend---Angular.git`
+
+Step 2:  
+Install Dependencies
+
+- Inside cloned directory run:  
+  `npm i`
+
+Step 3:  
+Run the project  
+`ng serve`
+
+Step 4:  
+Open Browser
+http://localhost:4200/
