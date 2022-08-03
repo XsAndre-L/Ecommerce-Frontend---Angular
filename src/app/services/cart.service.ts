@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
+import { Globals } from '../global/global';
 import { OrderInfo } from '../models/orderInfo';
 import { Product } from '../models/product';
 import { ProductService } from './product.service';
@@ -39,7 +40,7 @@ export class CartService {
       this.route.navigate(['/login']);
     }
     return this.http
-      .get<OrderInfo[]>('http://localhost:3000/cart', {
+      .get<OrderInfo[]>(`${Globals.endPoint}/cart`, {
         headers: new HttpHeaders({
           Authorization: '' + this.userService.token,
         }),
@@ -80,7 +81,7 @@ export class CartService {
   updateProductAmount(productId: number, amount: number) {
     this.addCartMessage('Item Updated!');
     return this.http.put(
-      'http://localhost:3000/cart',
+      `${Globals.endPoint}/cart`,
       {
         product_id: productId,
         productAmount: amount,
@@ -109,7 +110,7 @@ export class CartService {
       return this.updateProductAmount(hasItem.product.id!, hasItem.amount + 1);
     } else {
       return this.http.post(
-        'http://localhost:3000/cart',
+        `${Globals.endPoint}cart`,
         {
           product_id: newCartItem.product.id,
           product_amount: newCartItem.amount,
@@ -126,7 +127,7 @@ export class CartService {
   removeFromCart(productId: number) {
     this.addCartMessage('Item Removed!', false);
     return this.http.delete(
-      'http://localhost:3000/cart',
+      `${Globals.endPoint}/cart`,
 
       {
         headers: new HttpHeaders({
@@ -139,7 +140,7 @@ export class CartService {
 
   checkOutCart() {
     return this.http.put(
-      'http://localhost:3000/order',
+      `${Globals.endPoint}order`,
       {},
       {
         headers: new HttpHeaders({

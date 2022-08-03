@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { Globals } from '../global/global';
 import { Order } from '../models/order';
 import { UserService } from './user.service';
 
@@ -25,7 +26,7 @@ export class OrderService {
   }
 
   getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>('http://localhost:3000/order', {
+    return this.http.get<Order[]>(`${Globals.endPoint}/order`, {
       headers: new HttpHeaders({ Authorization: '' + this.userService.token }),
     });
   }

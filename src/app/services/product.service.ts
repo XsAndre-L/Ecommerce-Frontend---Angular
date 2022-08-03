@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { Globals } from '../global/global';
 import { Product } from '../models/product';
 import { UserService } from './user.service';
 
@@ -74,11 +75,11 @@ export class ProductService {
 
     if (category !== 'all') {
       return this.http.get<Product[]>(
-        `http://localhost:3000/product/?category=${category}`,
+        `${Globals.endPoint}/product/?category=${category}`,
         {}
       );
     } else {
-      return this.http.get<Product[]>(`http://localhost:3000/product`, {});
+      return this.http.get<Product[]>(`${Globals.endPoint}/product`, {});
     }
 
     console.log(this.productList);
@@ -106,7 +107,7 @@ export class ProductService {
     //----------------OLD CODE----------------------
 
     return this.http.get<Product>(
-      `http://localhost:3000/product/${product_id}`,
+      `${Globals.endPoint}/product/${product_id}`,
       {}
     );
   }

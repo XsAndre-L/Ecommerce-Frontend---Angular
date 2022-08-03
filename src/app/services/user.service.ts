@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Globals } from '../global/global';
 import { User } from '../models/user';
 
 @Injectable({
@@ -31,7 +32,7 @@ export class UserService {
   authorize(userInfo: User): Observable<string> {
     console.log(userInfo);
     console.log('Attempting Login');
-    return this.http.post<string>('http://localhost:3000/user/login', userInfo);
+    return this.http.post<string>(`${Globals.endPoint}/user/login`, userInfo);
   }
 
   signout() {
@@ -41,14 +42,14 @@ export class UserService {
   }
 
   getUserDetails(): Observable<User> {
-    return this.http.get<User>('http://localhost:3000/user', {
+    return this.http.get<User>(`${Globals.endPoint}/user`, {
       headers: new HttpHeaders({ Authorization: '' + this.token }),
     });
   }
 
   createAccount(newUser: User): Observable<string> {
     return this.http.post<string>(
-      'http://localhost:3000/user/signup',
+      `${Globals.endPoint}/user/signup`,
       newUser,
       {}
     );
