@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng deploy && ./scripts/deploy.sh",
+    "gitAuto": "git add --all && git commit -m 'auto' && git push"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +28,7 @@
     "@angular-devkit/build-angular": "^14.0.6",
     "@angular/cli": "~14.0.6",
     "@angular/compiler-cli": "^14.0.6",
+    "@jefiozie/ngx-aws-deploy": "^4.1.0",
     "@types/jasmine": "~4.0.0",
     "http-server": "^14.1.1",
     "jasmine-core": "~4.1.0",
