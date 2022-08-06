@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --no-watch --no-progress --browsers=ChromeHeadless",
-    "deploy": "chmod +x ./cmd/deploy.sh && bash ./scripts/deploy.sh",
+    "deploy": "chmod +x ./cmd/deploy.sh && bash ./cmd/deploy.sh",
     "gitAuto": "git add --all && git commit -m 'auto' && git push"
   },
   "private": true,
