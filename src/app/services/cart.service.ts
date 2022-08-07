@@ -110,7 +110,7 @@ export class CartService {
       return this.updateProductAmount(hasItem.product.id!, hasItem.amount + 1);
     } else {
       return this.http.post(
-        `${Globals.endPoint}cart`,
+        `${Globals.endPoint}/cart`,
         {
           product_id: newCartItem.product.id,
           product_amount: newCartItem.amount,
