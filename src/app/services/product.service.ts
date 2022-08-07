@@ -82,7 +82,7 @@ export class ProductService {
       return this.http.get<Product[]>(`${Globals.endPoint}/product`, {});
     }
 
-    console.log(this.productList);
+    // console.log(this.productList);
   }
 
   // Product Details
